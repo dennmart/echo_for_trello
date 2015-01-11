@@ -15,14 +15,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'slim-rails', '~> 3.0'
 gem 'omniauth', '~> 1.2'
 gem 'omniauth-trello', '0.0.4'
+gem 'httparty', '~> 0.13.3'
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Unicorn as the app server
 # gem 'unicorn'
-
-# Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
