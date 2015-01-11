@@ -13,6 +13,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'slim-rails', '~> 3.0'
+gem 'omniauth', '~> 1.2'
+gem 'omniauth-trello', '0.0.4'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -28,5 +30,5 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'rspec-rails', '~> 3.1'
+  gem 'factory_girl_rails', '~> 4.5'
 end
-
