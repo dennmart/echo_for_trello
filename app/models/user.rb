@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
       user.uid = auth["uid"]
       user.full_name = auth["info"]["name"]
       user.nickname = auth["info"]["nickname"]
+      user.oauth_token= auth["credentials"]["token"]
     end
   end
 end

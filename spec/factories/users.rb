@@ -4,5 +4,6 @@ FactoryGirl.define do
     uid 'trello-special-uid'
     full_name 'Dennis Martinez'
     nickname 'dennmart'
+    oauth_token 'trello-token'
   end
 end
