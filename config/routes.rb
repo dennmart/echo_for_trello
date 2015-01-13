@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'site#index'
 
-  get 'boards', to: 'boards#index'
+  resources 'boards'
 
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/auth/failure', to: redirect('/')
