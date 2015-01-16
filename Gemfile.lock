@@ -70,6 +70,7 @@ GEM
     globalid (0.3.0)
       activesupport (>= 4.1.0)
     hashie (3.3.2)
+    high_voltage (2.2.1)
     hike (1.2.3)
     httparty (0.13.3)
       json (~> 1.8)
@@ -207,6 +208,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   factory_girl_rails (~> 4.5)
+  high_voltage (~> 2.2.1)
   httparty (~> 0.13.3)
   jbuilder (~> 2.0)
   jquery-rails

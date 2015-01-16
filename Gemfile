@@ -16,6 +16,7 @@ gem 'slim-rails', '~> 3.0'
 gem 'omniauth', '~> 1.2'
 gem 'omniauth-trello', '0.0.4'
 gem 'httparty', '~> 0.13.3'
+gem 'high_voltage', '~> 2.2.1'
 
 # gem 'unicorn'
 # gem 'capistrano-rails', group: :development
