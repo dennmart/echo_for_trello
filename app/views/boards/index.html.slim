@@ -1,2 +1,3 @@
+= link_to "logout", logout_path
 - @boards.each do |board|
   h3= link_to board["name"], board_path(board["id"])
