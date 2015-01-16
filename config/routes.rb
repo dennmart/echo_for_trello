@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  root 'site#index'
-
   resources 'boards'
 
   get '/auth/:provider/callback', to: 'sessions#create'
