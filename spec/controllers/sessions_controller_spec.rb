@@ -13,7 +13,7 @@ RSpec.describe SessionsController, :type => :controller do
     it "redirects to root" do
       expect(User).to receive(:from_omniauth).and_return(user)
       get :create, "provider"=>"trello", oauth_token: "token", oauth_verifier: "verifier"
-      expect(response).to redirect_to(root_url)
+      expect(response).to redirect_to(boards_url)
     end
   end
 
