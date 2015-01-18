@@ -1,3 +1,9 @@
-= link_to "logout", logout_path
-- @boards.each do |board|
-  h3= link_to board["name"], board_path(board["id"])
+.row
+  .col-md-12
+    h2.text-center Select the board where you want to create a recurring card
+
+- @boards.in_groups_of(3, false) do |group|
+  .row
+    - group.each do |board|
+      .col-md-4
+        h3= link_to board["name"], board_path(board["id"])
