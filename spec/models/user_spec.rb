@@ -15,6 +15,14 @@ RSpec.describe User, :type => :model do
       it "does not create a new user record" do
         expect { User.from_omniauth(user_omniauth) }.to_not change(User, :count)
       end
+
+      it "updates the oAuth token if it changed" do
+        user_omniauth = OmniAuth::AuthHash.new(provider: user.provider, uid: user.uid, info: { name: user.full_name, nickname: user.nickname }, credentials: { token: 'trello-new-token' })
+        expect {
+          User.from_omniauth(user_omniauth)
+          user.reload
+        }.to change(user, :oauth_token)
+      end
     end
 
     context "new user" do
