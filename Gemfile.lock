@@ -160,6 +160,8 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (~> 1.1)
+    shoulda-matchers (2.7.0)
+      activesupport (>= 3.0.0)
     slim (3.0.1)
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
@@ -218,6 +220,7 @@ DEPENDENCIES
   rails (= 4.2.0)
   rspec-rails (~> 3.1)
   sass-rails (~> 5.0)
+  shoulda-matchers (~> 2.7)
   slim-rails (~> 3.0)
   spring
   turbolinks
