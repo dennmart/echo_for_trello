@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150110233754) do
+ActiveRecord::Schema.define(version: 20150119001005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cards", force: :cascade do |t|
+    t.string   "title",                            null: false
+    t.text     "description"
+    t.string   "trello_board_id",                  null: false
+    t.string   "trello_list_id",                   null: false
+    t.integer  "frequency",                        null: false
+    t.integer  "frequency_period",                 null: false
+    t.boolean  "disabled",         default: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "provider",    null: false
