@@ -7,4 +7,12 @@ RSpec.describe BoardsController, :type => :controller do
       expect(response).to redirect_to(root_url)
     end
   end
+
+  describe "#show" do
+    pending
+  end
+
+  describe "#new_list" do
+    pending
+  end
 end

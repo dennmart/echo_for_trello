@@ -1,4 +1,44 @@
-h2= @board["name"]
+.row
+  .col-md-2
+    p= link_to '« Back to boards', boards_path
 
-- @board["lists"].each do |list|
-  h3= list["name"]
+.row
+  .col-md-4.col-md-offset-4
+    h3.text-center= @board['name']
+
+.row
+  .col-md-12
+    h2.text-center Now, select a list from this board, enter the card name and specify the frequency you want the card to be created.
+
+= form_for Card.new(trello_board_id: @board["id"]), url: boards_path, html: { class: 'form-horizontal' } do |f|
+  .form-group
+    .col-md-2.col-md-offset-2.text-right
+      = f.label :trello_list_id, 'List:', class: 'control-label'
+    .col-md-4
+      = f.select :trello_list_id, @list_options, { prompt: 'Select a list...' }, class: 'form-control'
+
+  .form-group
+    .col-md-2.col-md-offset-2.text-right
+      = f.label :title, 'Card Title:', class: 'control-label'
+    .col-md-4
+      = f.text_field :title, class: 'form-control', placeholder: 'Card Title'
+
+  .form-group
+    .col-md-2.col-md-offset-2.text-right
+      = f.label :description, 'Description:', class: 'control-label'
+    .col-md-4
+      = f.text_area :description, class: 'form-control', placeholder: 'Description (optional)'
+
+  .form-group
+    .col-md-2.col-md-offset-2.text-right
+      = f.label :frequency, 'Frequency:', class: 'control-label'
+    .col-md-4
+      = f.select :frequency, Card::FREQUENCY, { include_blank: true }, class: 'form-control'
+
+  .form-group
+    .col-md-12.text-center
+      = f.hidden_field :trello_board_id
+      = f.submit 'Create recurring card', class: 'btn btn-primary'
+
+= render 'new_list_modal'
+

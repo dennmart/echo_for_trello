@@ -1,0 +1,17 @@
+#new_list_modal.modal.fade tabindex="-1" role="dialog" aria-labelledby="newListModal" aria-hidden="true"
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-header
+        button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          span aria-hidden="true" &times;
+        h4.modal-title Create a new list
+      .modal-body
+        p Enter the name of the list you would like to create on this board:
+        #new_list_modal_messages
+        .form-group
+          input type="text" class="form-control" id="new_list_modal_title"
+      .modal-footer
+        span#new_list_modal_loader.hidden
+          .ui.active.inline.loader
+        button type="button" class="btn btn-default" data-dismiss="modal" Close
+        button type="button" class="btn btn-primary" id="new_list_modal_save" Create list
