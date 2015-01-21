@@ -5,11 +5,11 @@ default: &default
 
 development:
   <<: *default
-  database: trello_saisan_development
+  database: trello_echo_development
 
 test:
   <<: *default
-  database: trello_saisan_test
+  database: trello_echo_test
 
 production:
   <<: *default

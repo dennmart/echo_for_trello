@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title Trello Saisan - Create recurring cards in Trello
+    title Trello Echo - Create recurring cards in Trello
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
@@ -10,8 +10,8 @@ html
       .container
         .navbar-header
           a.navbar-brand
-            = image_tag 'trello_saisan.png', width: '32px'
-          p.navbar-text Trello Saisan
+            = image_tag 'trello_echo.png', width: '32px'
+          p.navbar-text Trello Echo
         p.navbar-text.navbar-right Hi, #{current_user.full_name}! #{link_to 'Logout', logout_path}
 
     .container
