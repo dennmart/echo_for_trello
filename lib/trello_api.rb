@@ -15,4 +15,8 @@ class TrelloApi
   def board(board_id, options = {})
     self.class.get "/boards/#{board_id}", query: @options.merge(options)
   end
+
+  def create_list(board_id, list_name)
+    self.class.post "/boards/#{board_id}/lists", query: @options, body: { name: list_name }
+  end
 end

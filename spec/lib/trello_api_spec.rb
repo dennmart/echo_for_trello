@@ -28,4 +28,8 @@ RSpec.describe TrelloApi do
       trello.board("trello-board-id", fields: "name")
     end
   end
+
+  describe "#create_list" do
+    pending
+  end
 end
