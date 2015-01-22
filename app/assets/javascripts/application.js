@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require hogan.js
+//= require_tree ./templates
 //= require_tree .
