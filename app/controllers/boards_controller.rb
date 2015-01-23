@@ -9,26 +9,25 @@ class BoardsController < ApplicationController
   def show
     @trello = TrelloApi.new(current_user.oauth_token)
     @board = @trello.board(params[:id], { lists: 'open', cards: 'open' })
-    @list_options = @board['lists'].collect { |list| [list['name'], list['id']] }
-    @list_options << ['Create a new list...', 'new_list']
+    @card = Card.new(trello_board_id: @board["id"])
   end
 
   def create
-    card = Card.new(card_params)
-    if card.save
+    @card = Card.new(card_params)
+    if @card.save
       @trello = TrelloApi.new(current_user.oauth_token)
-      @trello.create_card(card.trello_list_id, card.trello_api_parameters)
+      @trello.create_card(@card.trello_list_id, @card.trello_api_parameters)
       flash[:notice] = 'Your card was saved!'
+      redirect_to board_path(@card.trello_board_id)
     else
       flash[:error] = 'Your card was not saved.'
+      @trello = TrelloApi.new(current_user.oauth_token)
+      @board = @trello.board(@card.trello_board_id, { lists: 'open', cards: 'open' })
+      render :show
     end
-    redirect_to board_path(card.trello_board_id)
   end
 
   def new_list
-    # params:
-    # id - Trello Board ID
-    # list_name: List name
     @trello = TrelloApi.new(current_user.oauth_token)
     list_response = @trello.create_list(params[:id], params[:list_name])
     if list_response.code == 200

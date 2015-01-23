@@ -10,12 +10,12 @@
   .col-md-12
     h2.text-center Now, select a list from this board, enter the card name and specify the frequency you want the card to be created.
 
-= form_for Card.new(trello_board_id: @board["id"]), url: boards_path, html: { class: 'form-horizontal' } do |f|
+= form_for @card, url: boards_path, html: { class: 'form-horizontal' } do |f|
   .form-group
     .col-md-2.col-md-offset-2.text-right
       = f.label :trello_list_id, 'List:', class: 'control-label'
     .col-md-4
-      = f.select :trello_list_id, @list_options, { prompt: 'Select a list...' }, class: 'form-control'
+      = f.select :trello_list_id, trello_list_options(@board), { prompt: 'Select a list...' }, class: 'form-control'
 
   .form-group
     .col-md-2.col-md-offset-2.text-right
