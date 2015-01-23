@@ -16,4 +16,5 @@
 //= require bootstrap-sprockets
 //= require hogan.js
 //= require_tree ./templates
+//= require_tree ./vendor
 //= require_tree .

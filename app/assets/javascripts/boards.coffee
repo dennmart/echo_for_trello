@@ -100,3 +100,20 @@ $ ->
         template = HoganTemplates['frequency_monthly_options']
         templateData = monthlyOptions
       $('#frequency_period_group').html(template.render(templateData))
+
+  $('#new_card').validate
+    rules:
+      'card[trello_list_id]':
+        required: true
+      'card[title]':
+        required: true
+      'card[frequency]':
+        required: true
+    messages:
+      'card[trello_list_id]': 'Please select a list from the menu, or create a new list'
+      'card[title]': 'Please enter the card title'
+      'card[frequency]': 'Please select the frequency you want the card to be created'
+    highlight: (elem) ->
+      $(elem).parent('div').addClass('has-error')
+    unhighlight: (elem) ->
+      $(elem).parent('div').removeClass('has-error')
