@@ -15,4 +15,8 @@ RSpec.describe BoardsController, :type => :controller do
   describe "#new_list" do
     pending
   end
+
+  describe "#create" do
+    pending
+  end
 end

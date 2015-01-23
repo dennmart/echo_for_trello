@@ -19,4 +19,8 @@ class TrelloApi
   def create_list(board_id, list_name)
     self.class.post "/boards/#{board_id}/lists", query: @options, body: { name: list_name }
   end
+
+  def create_card(list_id, card_info)
+    self.class.post "/lists/#{list_id}/cards", query: @options, body: card_info
+  end
 end

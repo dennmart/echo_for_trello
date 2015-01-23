@@ -35,10 +35,11 @@
     .col-md-4
       = f.select :frequency, Card::FREQUENCY, { include_blank: true }, class: 'form-control'
 
+  #frequency_period_group.form-group
+
   .form-group
     .col-md-12.text-center
       = f.hidden_field :trello_board_id
       = f.submit 'Create recurring card', class: 'btn btn-primary'
 
 = render 'new_list_modal'
-

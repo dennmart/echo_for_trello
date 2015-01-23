@@ -15,4 +15,9 @@ html
         p.navbar-text.navbar-right Hi, #{current_user.full_name}! #{link_to 'Logout', logout_path}
 
     .container
+      .flash-messages
+        - if flash[:notice]
+          p.bg-success= flash[:notice]
+        - elsif flash[:error]
+          p.bg-danger= flash[:error]
       = yield

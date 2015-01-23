@@ -32,4 +32,8 @@ RSpec.describe TrelloApi do
   describe "#create_list" do
     pending
   end
+
+  describe "#create_card" do
+    pending
+  end
 end

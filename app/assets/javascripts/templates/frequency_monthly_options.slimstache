@@ -1,0 +1,5 @@
+.col-md-2.col-md-offset-2.text-right
+  label class='control-label' Day of the month:
+.col-md-4
+  select#card_frequency_period.form-control name='card[frequency_period]'
+    | {{#monthly}}<option value='{{day}}'>{{day}}</option>{{/monthly}}

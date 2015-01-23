@@ -13,6 +13,18 @@ class BoardsController < ApplicationController
     @list_options << ['Create a new list...', 'new_list']
   end
 
+  def create
+    card = Card.new(card_params)
+    if card.save
+      @trello = TrelloApi.new(current_user.oauth_token)
+      @trello.create_card(card.trello_list_id, card.trello_api_parameters)
+      flash[:notice] = 'Your card was saved!'
+    else
+      flash[:error] = 'Your card was not saved.'
+    end
+    redirect_to board_path(card.trello_board_id)
+  end
+
   def new_list
     # params:
     # id - Trello Board ID
@@ -24,5 +36,11 @@ class BoardsController < ApplicationController
     else
       render json: { success: false, message: "Trello responsed with the following error: #{list_response.code} - #{list_response.message}" }, status: 422
     end
+  end
+
+  private
+
+  def card_params
+    params.require(:card).permit(:title, :description, :trello_board_id, :trello_list_id, :frequency, :frequency_period)
   end
 end
