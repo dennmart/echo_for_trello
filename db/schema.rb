@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20150119001005) do
     t.string   "trello_board_id",                  null: false
     t.string   "trello_list_id",                   null: false
     t.integer  "frequency",                        null: false
-    t.integer  "frequency_period",                 null: false
+    t.integer  "frequency_period"
     t.boolean  "disabled",         default: false
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
