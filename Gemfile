@@ -22,6 +22,10 @@ gem 'hogan_assets', '~> 1.6'
 # gem 'unicorn'
 # gem 'capistrano-rails', group: :development
 
+group :development do
+  gem 'pry-rails', '~> 0.3'
+end
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
