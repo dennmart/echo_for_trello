@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :cards
+
   def self.from_omniauth(auth)
     user = where(provider: auth.provider, uid: auth.uid).first || create_from_omniauth(auth)
     user.update_attributes(oauth_token: auth["credentials"]["token"]) unless user.oauth_token == auth["credentials"]["token"]

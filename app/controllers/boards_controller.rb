@@ -14,6 +14,7 @@ class BoardsController < ApplicationController
 
   def create
     @card = Card.new(card_params)
+    @card.user = current_user
     if @card.save
       @card.set_next_run
       @trello = TrelloApi.new(current_user.oauth_token)

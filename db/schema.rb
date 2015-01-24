@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20150119001005) do
   enable_extension "plpgsql"
 
   create_table "cards", force: :cascade do |t|
+    t.integer  "user_id",                          null: false
     t.string   "title",                            null: false
     t.text     "description"
     t.string   "trello_board_id",                  null: false
@@ -28,6 +29,9 @@ ActiveRecord::Schema.define(version: 20150119001005) do
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
   end
+
+  add_index "cards", ["next_run"], name: "index_cards_on_next_run", using: :btree
+  add_index "cards", ["user_id"], name: "index_cards_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "provider",    null: false

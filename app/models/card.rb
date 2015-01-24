@@ -1,6 +1,8 @@
 class Card < ActiveRecord::Base
   FREQUENCY = { 'Daily' => 1, 'Weekly' => 2, 'Monthly' => 3 }
 
+  belongs_to :user
+
   validates :title, :trello_board_id, :trello_list_id, :frequency, presence: true
   validates :frequency, inclusion: FREQUENCY.values
   validates :frequency_period, presence: true, if: :frequency_needs_period?
