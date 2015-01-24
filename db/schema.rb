@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20150119001005) do
     t.integer  "frequency",                        null: false
     t.integer  "frequency_period"
     t.boolean  "disabled",         default: false
+    t.datetime "next_run"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
   end

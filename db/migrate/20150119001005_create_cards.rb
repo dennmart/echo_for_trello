@@ -8,6 +8,7 @@ class CreateCards < ActiveRecord::Migration
       t.integer :frequency, null: false
       t.integer :frequency_period
       t.boolean :disabled, default: false
+      t.datetime :next_run
       t.timestamps null: false
     end
   end
