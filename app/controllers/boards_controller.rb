@@ -15,6 +15,7 @@ class BoardsController < ApplicationController
   def create
     @card = Card.new(card_params)
     if @card.save
+      @card.set_next_run
       @trello = TrelloApi.new(current_user.oauth_token)
       @trello.create_card(@card.trello_list_id, @card.trello_api_parameters)
       flash[:notice] = 'Your card was saved!'
