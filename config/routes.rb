@@ -5,6 +5,11 @@ Rails.application.routes.draw do
       post 'new_list'
     end
   end
+  resources 'cards' do
+    member do
+      put 'update_status'
+    end
+  end
 
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/auth/failure', to: redirect('/')

@@ -12,7 +12,11 @@ html
           a.navbar-brand
             = image_tag 'trello_echo.png', width: '32px'
           p.navbar-text Trello Echo
-        p.navbar-text.navbar-right Hi, #{current_user.full_name}! #{link_to 'Logout', logout_path}
+        ul.nav.navbar-nav.navbar-right
+          li
+            p.navbar-text Hi, #{current_user.full_name}!
+          li= link_to 'Your cards', cards_path
+          li= link_to 'Logout', logout_path
 
     .container
       .flash-messages
