@@ -5,6 +5,12 @@ class CardsController < ApplicationController
     @cards = current_user.cards
   end
 
+  def show
+    @card = current_user.cards.find(params[:id])
+    @trello = TrelloApi.new(current_user.oauth_token)
+    @board = @trello.board(@card.trello_board_id, { lists: 'open', cards: 'open' })
+  end
+
   def destroy
     @card = current_user.cards.where(id: params[:id]).first
     if @card

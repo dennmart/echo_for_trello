@@ -1,0 +1,33 @@
+= form_for @card, url: boards_path, html: { class: 'form-horizontal' } do |f|
+  .form-group
+    .col-md-2.col-md-offset-2.text-right
+      = f.label :trello_list_id, 'List:', class: 'control-label'
+    .col-md-4
+      = f.select :trello_list_id, trello_list_options(@board), { prompt: 'Select a list...' }, class: 'form-control'
+
+  .form-group
+    .col-md-2.col-md-offset-2.text-right
+      = f.label :title, 'Card Title:', class: 'control-label'
+    .col-md-4
+      = f.text_field :title, class: 'form-control', placeholder: 'Card Title'
+
+  .form-group
+    .col-md-2.col-md-offset-2.text-right
+      = f.label :description, 'Description:', class: 'control-label'
+    .col-md-4
+      = f.text_area :description, class: 'form-control', placeholder: 'Description (optional)'
+
+  .form-group
+    .col-md-2.col-md-offset-2.text-right
+      = f.label :frequency, 'Frequency:', class: 'control-label'
+    .col-md-4
+      = f.select :frequency, Card::FREQUENCY, { include_blank: true }, class: 'form-control'
+
+  #frequency_period_group.form-group
+
+  .form-group
+    .col-md-12.text-center
+      = f.hidden_field :trello_board_id
+      = f.submit 'Create recurring card', class: 'btn btn-primary'
+
+= render 'shared/new_list_modal'

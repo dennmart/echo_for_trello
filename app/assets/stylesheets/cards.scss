@@ -1,11 +1,15 @@
 // Place all the styles related to the Cards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.delete-link {
-  color: #F00;
+.edit-card-link {
   margin-right: 20px;
 }
 
-.update-status-link {
+.update-card-status-link {
   color: #F60;
+  margin-right: 20px;
+}
+
+.delete-card-link {
+  color: #F00;
 }

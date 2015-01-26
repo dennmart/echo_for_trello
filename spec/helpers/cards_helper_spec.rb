@@ -3,6 +3,12 @@ require 'rails_helper'
 RSpec.describe CardsHelper, :type => :helper do
   let(:card) { FactoryGirl.create(:card) }
 
+  describe "#edit_card_link" do
+    it "returns a link to edit the specific card" do
+      expect(helper.edit_card_link(card)).to match(card_path(card))
+    end
+  end
+
   describe "#delete_card_link" do
     it "returns a link to delete the specific card" do
       expect(helper.delete_card_link(card)).to match(card_path(card))
