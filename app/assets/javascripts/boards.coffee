@@ -125,6 +125,15 @@ $ ->
       $('#frequency_period_group').html(HoganTemplates['frequency_weekly_options'].render(weeklyOptions))
     else if $('#card_frequency').val() == '3'
       $('#frequency_period_group').html(HoganTemplates['frequency_monthly_options'].render(monthlyOptions))
+      if $('#frequency_period_value').val() > 28
+        $('#frequency_period_warning').html(HoganTemplates['frequency_period_warning'].render({ 'card_day': $('#frequency_period_value').val() }))
 
   $(document).ready(frequencyPeriodOptions)
-  $(document).on('page:load', frequencyPeriodOptions)
+
+  $(document).ready ->
+    $('#card_frequency_period').on 'change', ->
+      if this.value > 28
+        $('#frequency_period_warning').html(HoganTemplates['frequency_period_warning'].render({ 'card_day': this.value }))
+      else
+        $('#frequency_period_warning').html('')
+

@@ -25,9 +25,12 @@
 
   #frequency_period_group.form-group
 
+  #frequency_period_warning
+
   .form-group
     .col-md-12.text-center
       = f.hidden_field :trello_board_id
+      = hidden_field_tag :frequency_period_value, card.frequency_period
       = f.submit submit_text, class: 'btn btn-primary'
 
 = render 'shared/new_list_modal'

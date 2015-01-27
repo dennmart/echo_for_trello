@@ -1,0 +1,2 @@
+.col-md-6.col-md-offset-3.text-center.frequency-month-warning
+  p.bg-warning Please note, on months with less than {{card_day}} days, your card will be created in Trello on the last day of that month.
