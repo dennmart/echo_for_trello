@@ -15,7 +15,8 @@ html
         ul.nav.navbar-nav.navbar-right
           li
             p.navbar-text Hi, #{current_user.full_name}!
-          li= link_to 'Your cards', cards_path
+          li= link_to 'Your Trello Boards', boards_path
+          li= link_to 'Your Cards', cards_path
           li= link_to 'Logout', logout_path
 
     .container
