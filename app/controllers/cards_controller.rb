@@ -18,7 +18,7 @@ class CardsController < ApplicationController
     if @card.update_attributes(card_params)
       @card.set_next_run
       flash[:notice] = 'Your card was updated!'
-      redirect_to card_path(@card)
+      redirect_to cards_path
     else
       flash[:error] = 'Your card was not updated.'
       @trello = TrelloApi.new(current_user.oauth_token)
