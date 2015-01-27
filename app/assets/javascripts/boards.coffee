@@ -117,3 +117,14 @@ $ ->
       $(elem).parent('div').addClass('has-error')
     unhighlight: (elem) ->
       $(elem).parent('div').removeClass('has-error')
+
+  frequencyPeriodOptions = ->
+    if $('#card_frequency').val() == '1'
+      $('#frequency_period_group').html(HoganTemplates['frequency_daily_options'].render())
+    else if $('#card_frequency').val() == '2'
+      $('#frequency_period_group').html(HoganTemplates['frequency_weekly_options'].render(weeklyOptions))
+    else if $('#card_frequency').val() == '3'
+      $('#frequency_period_group').html(HoganTemplates['frequency_monthly_options'].render(monthlyOptions))
+
+  $(document).ready(frequencyPeriodOptions)
+  $(document).on('page:load', frequencyPeriodOptions)

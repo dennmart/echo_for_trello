@@ -10,4 +10,4 @@
   .col-md-12
     h2.text-center Now, select a list from this board, enter the card name and specify the frequency you want the card to be created.
 
-= render partial: 'shared/card_form', locals: { card: @card, board: @board }
+= render partial: 'shared/card_form', locals: { card: @card, board: @board, submit_location: boards_path, submit_text: 'Create card' }

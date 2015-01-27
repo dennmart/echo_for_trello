@@ -1,9 +1,9 @@
-= form_for @card, url: boards_path, html: { class: 'form-horizontal' } do |f|
+= form_for card, url: submit_location, html: { class: 'form-horizontal' } do |f|
   .form-group
     .col-md-2.col-md-offset-2.text-right
       = f.label :trello_list_id, 'List:', class: 'control-label'
     .col-md-4
-      = f.select :trello_list_id, trello_list_options(@board), { prompt: 'Select a list...' }, class: 'form-control'
+      = f.select :trello_list_id, trello_list_options(board), { prompt: 'Select a list...' }, class: 'form-control'
 
   .form-group
     .col-md-2.col-md-offset-2.text-right
@@ -28,6 +28,6 @@
   .form-group
     .col-md-12.text-center
       = f.hidden_field :trello_board_id
-      = f.submit 'Create recurring card', class: 'btn btn-primary'
+      = f.submit submit_text, class: 'btn btn-primary'
 
 = render 'shared/new_list_modal'
