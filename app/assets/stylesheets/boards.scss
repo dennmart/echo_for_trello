@@ -5,3 +5,23 @@
   padding: 5px;
   margin-bottom: 15px;
 }
+
+.board-link {
+  color: #FFF;
+
+  &:hover {
+    color: #DDD;
+  }
+}
+
+.board-view p {
+  background-color: #00F;
+  color: #FFF;
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 5px;
+  padding-bottom: 50px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}

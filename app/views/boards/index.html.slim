@@ -5,5 +5,6 @@
 - @boards.in_groups_of(3, false) do |group|
   .row
     - group.each do |board|
-      .col-md-4
-        h3= link_to board["name"], board_path(board["id"])
+      = link_to board_path(board["id"]), class: 'board-link' do
+        .col-md-4.board-view.text-center
+          p= board["name"]
