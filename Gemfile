@@ -18,6 +18,7 @@ gem 'omniauth-trello', '0.0.4'
 gem 'httparty', '~> 0.13.3'
 gem 'high_voltage', '~> 2.2.1'
 gem 'hogan_assets', '~> 1.6'
+gem 'kaminari', '~> 0.16'
 
 # gem 'unicorn'
 # gem 'capistrano-rails', group: :development

@@ -2,7 +2,7 @@ class CardsController < ApplicationController
   before_filter :authenticate
 
   def index
-    @cards = current_user.cards
+    @cards = current_user.cards.page(params[:page])
     @trello = TrelloApi.new(current_user.oauth_token)
     @boards = @trello.boards(lists: 'open')
   end

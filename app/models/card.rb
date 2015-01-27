@@ -7,6 +7,8 @@ class Card < ActiveRecord::Base
   validates :frequency, inclusion: FREQUENCY.values
   validates :frequency_period, presence: true, if: :frequency_needs_period?
 
+  paginates_per 10
+
   def trello_api_parameters
     # Trello requires the due date in the API call, but we don't use it yet.
     { name: title, desc: description, due: nil }
