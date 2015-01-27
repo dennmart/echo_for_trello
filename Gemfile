@@ -10,7 +10,6 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'jquery-rails'
-gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'slim-rails', '~> 3.0'
 gem 'omniauth', '~> 1.2'
@@ -19,7 +18,6 @@ gem 'httparty', '~> 0.13.3'
 gem 'high_voltage', '~> 2.2.1'
 gem 'hogan_assets', '~> 1.6'
 gem 'kaminari', '~> 0.16'
-gem 'jquery-turbolinks', '~> 2.1'
 
 # gem 'unicorn'
 # gem 'capistrano-rails', group: :development
