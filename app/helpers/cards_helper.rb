@@ -11,4 +11,16 @@ module CardsHelper
     link_text = card.disabled? ? "Enable" : "Disable"
     link_to "<span class='glyphicon glyphicon-ban-circle'></span> #{link_text}".html_safe, update_status_card_path(card), method: :put, class: "update-card-status-link"
   end
+
+  def board_name(boards, board_id)
+    board = boards.detect { |board| board["id"] == board_id }
+    board.present? ? board["name"] : "---"
+  end
+
+  def list_name(boards, board_id, list_id)
+    board = boards.detect { |board| board["id"] == board_id }
+    return "---" unless board.present?
+    list = board["lists"].detect { |list| list["id"] == list_id }
+    list.present? ? list["name"] : "---"
+  end
 end

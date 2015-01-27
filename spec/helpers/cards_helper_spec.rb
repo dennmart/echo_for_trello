@@ -34,4 +34,12 @@ RSpec.describe CardsHelper, :type => :helper do
       expect(helper.update_card_status_link(card)).to match(/Enable/)
     end
   end
+
+  describe "#board_name" do
+    pending
+  end
+
+  describe "#list_name" do
+    pending
+  end
 end

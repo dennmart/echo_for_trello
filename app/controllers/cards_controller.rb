@@ -3,6 +3,8 @@ class CardsController < ApplicationController
 
   def index
     @cards = current_user.cards
+    @trello = TrelloApi.new(current_user.oauth_token)
+    @boards = @trello.boards(lists: 'open')
   end
 
   def show

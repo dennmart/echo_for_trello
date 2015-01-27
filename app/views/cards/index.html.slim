@@ -12,8 +12,8 @@
     tbody
       - @cards.each do |card|
         tr
-          td= card.trello_board_id
-          td= card.trello_list_id
+          td= board_name(@boards, card.trello_board_id)
+          td= list_name(@boards, card.trello_board_id, card.trello_list_id)
           td= card.title
           td
             = edit_card_link(card)
