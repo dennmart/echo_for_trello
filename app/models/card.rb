@@ -38,6 +38,13 @@ class Card < ActiveRecord::Base
     end
   end
 
+  def self.create_pending_trello_cards
+    Card.where("next_run <= ?", Time.now).each do |card|
+      CreateTrelloCardWorker.perform_async(card.user_id, card.id)
+      card.set_next_run
+    end
+  end
+
   private
 
   def frequency_needs_period?

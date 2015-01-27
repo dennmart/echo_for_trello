@@ -96,4 +96,25 @@ RSpec.describe Card, :type => :model do
       end
     end
   end
+
+  describe ".create_pending_trello_cards" do
+    before(:all) do
+      Timecop.freeze
+    end
+
+    after(:all) do
+      Timecop.return
+    end
+
+    it "finds all cards where next_run is due and calls the async task to create the cards" do
+      card_1 = FactoryGirl.create(:card, next_run: 1.hour.ago)
+      card_2 = FactoryGirl.create(:card, next_run: 30.minutes.ago)
+      card_3 = FactoryGirl.create(:card, next_run: 1.day.from_now)
+
+      expect(CreateTrelloCardWorker).to receive(:perform_async).with(card_1.user_id, card_1.id)
+      expect(CreateTrelloCardWorker).to receive(:perform_async).with(card_2.user_id, card_2.id)
+      expect(CreateTrelloCardWorker).to_not receive(:perform_async).with(card_3.user_id, card_3.id)
+      Card.create_pending_trello_cards
+    end
+  end
 end
