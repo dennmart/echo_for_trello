@@ -4,13 +4,15 @@ html
     title Trello Echo - Create recurring cards in Trello
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
+    link rel="shortcut icon" href="/favicon.png"
+    link rel="icon" href="/favicon.png"
     = csrf_meta_tags
   body
     nav.navbar.navbar-default.navbar-static-top
       .container
         .navbar-header
           a.navbar-brand
-            = image_tag 'trello_echo.png', width: '32px'
+            = image_tag 'trello-echo-header.png', width: '32px'
           p.navbar-text Trello Echo
         ul.nav.navbar-nav.navbar-right
           li
