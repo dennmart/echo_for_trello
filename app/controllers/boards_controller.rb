@@ -17,8 +17,6 @@ class BoardsController < ApplicationController
     @card.user = current_user
     if @card.save
       @card.set_next_run
-      @trello = TrelloApi.new(current_user.oauth_token)
-      @trello.create_card(@card.trello_list_id, @card.trello_api_parameters)
       flash[:notice] = 'Your card was saved!'
       redirect_to board_path(@card.trello_board_id)
     else
