@@ -101,7 +101,7 @@ $ ->
         templateData = monthlyOptions
       $('#frequency_period_group').html(template.render(templateData))
 
-  $('#new_card').validate
+  $('.card-form').validate
     rules:
       'card[trello_list_id]':
         required: true
