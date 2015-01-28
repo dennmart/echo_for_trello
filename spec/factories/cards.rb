@@ -6,5 +6,15 @@ FactoryGirl.define do
     trello_board_id 'trelloboard123'
     trello_list_id 'trellolist123'
     frequency Card::FREQUENCY['Daily']
+
+    trait :weekly do
+      frequency Card::FREQUENCY['Weekly']
+      frequency_period 0
+    end
+
+    trait :monthly do
+      frequency Card::FREQUENCY['Monthly']
+      frequency_period 1
+    end
   end
 end

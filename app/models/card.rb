@@ -40,6 +40,18 @@ class Card < ActiveRecord::Base
     end
   end
 
+  def daily?
+    frequency == FREQUENCY['Daily']
+  end
+
+  def weekly?
+    frequency == FREQUENCY['Weekly']
+  end
+
+  def monthly?
+    frequency == FREQUENCY['Monthly']
+  end
+
   def self.create_pending_trello_cards
     Card.where("next_run <= ?", Time.now).each do |card|
       CreateTrelloCardWorker.perform_async(card.user_id, card.id)

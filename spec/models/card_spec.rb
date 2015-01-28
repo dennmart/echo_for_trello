@@ -97,6 +97,42 @@ RSpec.describe Card, :type => :model do
     end
   end
 
+  describe "#daily?" do
+    it "returns true if the card frequency is daily" do
+      card = FactoryGirl.build(:card)
+      expect(card.daily?).to be_truthy
+    end
+
+    it "returns false if the card frequency is not daily" do
+      card = FactoryGirl.build(:card, :weekly)
+      expect(card.daily?).to be_falsey
+    end
+  end
+
+  describe "#weekly?" do
+    it "returns true if the card frequency is weekly" do
+      card = FactoryGirl.build(:card, :weekly)
+      expect(card.weekly?).to be_truthy
+    end
+
+    it "returns false if the card frequency is not weekly" do
+      card = FactoryGirl.build(:card)
+      expect(card.weekly?).to be_falsey
+    end
+  end
+
+  describe "#monthly?" do
+    it "returns true if the card frequency is monthly" do
+      card = FactoryGirl.build(:card, :monthly)
+      expect(card.monthly?).to be_truthy
+    end
+
+    it "returns false if the card frequency is not monthly" do
+      card = FactoryGirl.build(:card, :weekly)
+      expect(card.monthly?).to be_falsey
+    end
+  end
+
   describe ".create_pending_trello_cards" do
     before(:all) do
       Timecop.freeze
