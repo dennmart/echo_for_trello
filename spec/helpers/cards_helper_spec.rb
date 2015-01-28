@@ -42,4 +42,21 @@ RSpec.describe CardsHelper, :type => :helper do
   describe "#list_name" do
     pending
   end
+
+  describe "#card_frequency_text" do
+    it "returns 'Daily' if the card is daily" do
+      card = FactoryGirl.build(:card)
+      expect(helper.card_frequency_text(card)).to eq("Daily")
+    end
+
+    it "returns the day of the week if the card is weekly" do
+      card = FactoryGirl.build(:card, :weekly, frequency_period: 6)
+      expect(helper.card_frequency_text(card)).to eq("Every Saturday")
+    end
+
+    it "returns the day of the month ordinalized if the card is monthly" do
+      card = FactoryGirl.build(:card, :monthly, frequency_period: 10)
+      expect(helper.card_frequency_text(card)).to eq("Every month on the 10th")
+    end
+  end
 end

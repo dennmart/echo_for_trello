@@ -8,6 +8,7 @@
         th Board
         th List
         th Card Name
+        th Frequency
         th Action
     tbody
       - @cards.each do |card|
@@ -15,6 +16,7 @@
           td= board_name(@boards, card.trello_board_id)
           td= list_name(@boards, card.trello_board_id, card.trello_list_id)
           td= card.title
+          td= card_frequency_text(card)
           td
             = edit_card_link(card)
             = update_card_status_link(card)

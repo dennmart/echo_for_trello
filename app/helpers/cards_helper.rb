@@ -23,4 +23,14 @@ module CardsHelper
     list = board["lists"].detect { |list| list["id"] == list_id }
     list.present? ? list["name"] : "---"
   end
+
+  def card_frequency_text(card)
+    if card.daily?
+      "Daily"
+    elsif card.weekly?
+      "Every #{Date::DAYNAMES[card.frequency_period]}"
+    elsif card.monthly?
+      "Every month on the #{card.frequency_period.ordinalize}"
+    end
+  end
 end
