@@ -33,4 +33,12 @@ module CardsHelper
       "Every month on the #{card.frequency_period.ordinalize}"
     end
   end
+
+  def card_creation_status(log)
+    if log.successful?
+      "<span class='glyphicon glyphicon-ok log-successful'></span>".html_safe
+    else
+      "<span class='glyphicon glyphicon-remove log-unsuccessful'></span><br />#{log.message}".html_safe
+    end
+  end
 end

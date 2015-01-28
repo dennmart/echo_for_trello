@@ -8,7 +8,7 @@ RSpec.describe CardsController, :type => :controller do
   end
 
   describe "#index" do
-    it "fetchs the current user's cards" do
+    it "fetches the current user's cards" do
       pending "Needs to stub Trello information"
       new_user = FactoryGirl.create(:user)
       user_card = FactoryGirl.create(:card, user: user)
@@ -64,6 +64,18 @@ RSpec.describe CardsController, :type => :controller do
         put :update_status, id: card.id
         card.reload
       }.to_not change(card, :disabled)
+    end
+  end
+
+  describe "#logs" do
+    it "fetches the current user's card logs" do
+      new_user = FactoryGirl.create(:user)
+      user_log = FactoryGirl.create(:card_log, user: user)
+      new_user_log = FactoryGirl.create(:card_log, user: new_user)
+
+      get :logs
+      expect(assigns(:card_logs)).to include(user_log)
+      expect(assigns(:card_logs)).to_not include(new_user_log)
     end
   end
 end

@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     member do
       put 'update_status'
     end
+
+    collection do
+      get 'logs'
+    end
   end
 
   get '/auth/:provider/callback', to: 'sessions#create'

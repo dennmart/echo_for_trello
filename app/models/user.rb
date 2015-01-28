@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :cards
+  has_many :card_logs
 
   def self.from_omniauth(auth)
     user = where(provider: auth.provider, uid: auth.uid).first || create_from_omniauth(auth)

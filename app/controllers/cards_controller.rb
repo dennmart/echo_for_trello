@@ -42,6 +42,10 @@ class CardsController < ApplicationController
     redirect_to cards_path
   end
 
+  def logs
+    @card_logs = current_user.card_logs.includes(:card).page(params[:page])
+  end
+
   private
 
   def card_params

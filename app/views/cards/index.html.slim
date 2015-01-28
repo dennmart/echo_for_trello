@@ -22,5 +22,10 @@
             = update_card_status_link(card)
             = delete_card_link(card)
 
-  .text-center
-    = paginate @cards
+  .row
+    .col-md-12.text-center
+      = paginate @cards
+
+  .row
+    .col-md-12.text-center
+      = link_to "Log of created cards", logs_cards_path

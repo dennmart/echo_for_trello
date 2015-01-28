@@ -4,6 +4,7 @@ class Card < ActiveRecord::Base
   default_scope { order(created_at: :desc) }
 
   belongs_to :user
+  has_many :card_logs
 
   validates :title, :trello_board_id, :trello_list_id, :frequency, presence: true
   validates :frequency, inclusion: FREQUENCY.values
