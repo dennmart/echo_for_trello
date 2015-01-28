@@ -100,6 +100,7 @@ $ ->
         template = HoganTemplates['frequency_monthly_options']
         templateData = monthlyOptions
       $('#frequency_period_group').html(template.render(templateData))
+      $('#frequency_period_warning').html('')
 
   $('.card-form').validate
     rules:
@@ -119,14 +120,17 @@ $ ->
       $(elem).parent('div').removeClass('has-error')
 
   frequencyPeriodOptions = ->
+    frequencyPeriodValue = $('#frequency_period_value').val()
     if $('#card_frequency').val() == '1'
       $('#frequency_period_group').html(HoganTemplates['frequency_daily_options'].render())
     else if $('#card_frequency').val() == '2'
       $('#frequency_period_group').html(HoganTemplates['frequency_weekly_options'].render(weeklyOptions))
+      $('#card_frequency_period').val(frequencyPeriodValue)
     else if $('#card_frequency').val() == '3'
       $('#frequency_period_group').html(HoganTemplates['frequency_monthly_options'].render(monthlyOptions))
-      if $('#frequency_period_value').val() > 28
-        $('#frequency_period_warning').html(HoganTemplates['frequency_period_warning'].render({ 'card_day': $('#frequency_period_value').val() }))
+      $('#card_frequency_period').val(frequencyPeriodValue)
+      if frequencyPeriodValue > 28
+        $('#frequency_period_warning').html(HoganTemplates['frequency_period_warning'].render({ 'card_day': frequencyPeriodValue }))
 
   $(document).ready(frequencyPeriodOptions)
 
