@@ -13,4 +13,4 @@ test:
 
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV['TRELLO_ECHO_DATABASE_URL'] %>
