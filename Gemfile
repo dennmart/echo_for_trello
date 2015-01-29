@@ -28,6 +28,7 @@ group :development do
   gem 'capistrano-bundler', '~> 1.1'
   gem 'capistrano-rbenv', '~> 2.0'
   gem 'capistrano-passenger', '0.0.1'
+  gem 'capistrano-sidekiq', '~> 0.4'
 end
 
 group :development, :test do
