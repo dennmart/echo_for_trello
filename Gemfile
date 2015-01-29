@@ -22,11 +22,12 @@ gem 'sidekiq', '~> 3.3'
 gem 'sinatra', '~> 1.4', require: false
 gem 'whenever', '~> 0.9', require: false
 
-# gem 'unicorn'
-# gem 'capistrano-rails', group: :development
-
 group :development do
   gem 'pry-rails', '~> 0.3'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-bundler', '~> 1.1'
+  gem 'capistrano-rbenv', '~> 2.0'
+  gem 'capistrano-passenger', '0.0.1'
 end
 
 group :development, :test do
