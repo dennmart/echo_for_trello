@@ -69,6 +69,13 @@ RSpec.describe Card, :type => :model do
         expect(card.next_run.wday).to eq(Date::DAYNAMES.index("Monday"))
         expect(card.next_run.day).to eq(26)
       end
+
+      it "properly sets the next run for the following day if set_next_run is run on the same day" do
+        card = FactoryGirl.create(:card, frequency: Card::FREQUENCY['Weekly'], frequency_period: Date::DAYNAMES.index("Wednesday"))
+        card.set_next_run
+        expect(card.next_run.wday).to eq(Date::DAYNAMES.index("Wednesday"))
+        expect(card.next_run.day).to eq(28)
+      end
     end
 
     context "for monthly cards" do

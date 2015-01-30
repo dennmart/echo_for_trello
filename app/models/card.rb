@@ -23,7 +23,7 @@ class Card < ActiveRecord::Base
     if frequency == FREQUENCY['Daily']
       update_attribute(:next_run, time.advance(days: 1))
     elsif frequency == FREQUENCY['Weekly']
-      if time.wday > frequency_period
+      if time.wday >= frequency_period
         update_attribute(:next_run, time.next_week + (frequency_period - 1).days)
       else
         update_attribute(:next_run, time + (frequency_period - time.wday).days)
@@ -56,7 +56,9 @@ class Card < ActiveRecord::Base
   def self.create_pending_trello_cards
     Card.where("next_run <= ?", Time.now).each do |card|
       CreateTrelloCardWorker.perform_async(card.user_id, card.id)
+      #puts card.next_run.inspect
       card.set_next_run
+      #puts card.next_run.inspect
     end
   end
 
