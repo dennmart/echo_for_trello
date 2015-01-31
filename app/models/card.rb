@@ -56,9 +56,7 @@ class Card < ActiveRecord::Base
   def self.create_pending_trello_cards
     Card.where("next_run <= ?", Time.now).each do |card|
       CreateTrelloCardWorker.perform_async(card.user_id, card.id)
-      #puts card.next_run.inspect
       card.set_next_run
-      #puts card.next_run.inspect
     end
   end
 
