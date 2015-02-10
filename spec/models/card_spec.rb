@@ -30,10 +30,10 @@ RSpec.describe Card, :type => :model do
 
   describe "#trello_api_parameters" do
     it "returns the necessary parameters for creating a card through the Trello API" do
-      card = FactoryGirl.build(:card, title: "Trello Card", description: "Trello Echo is awesome!")
+      card = FactoryGirl.build(:card, title: "Trello Card", description: "Echo for Trello is awesome!")
       api_params = card.trello_api_parameters
       expect(api_params[:name]).to eq("Trello Card")
-      expect(api_params[:desc]).to eq("Trello Echo is awesome!")
+      expect(api_params[:desc]).to eq("Echo for Trello is awesome!")
       expect(api_params[:due]).to be_nil
     end
   end
