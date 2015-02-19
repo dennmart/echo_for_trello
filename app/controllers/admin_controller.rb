@@ -2,8 +2,6 @@ class AdminController < ApplicationController
   before_filter :admin_authenticate
 
   def index
-    @users_count = User.count
-    @cards_count = Card.count
   end
 
   private

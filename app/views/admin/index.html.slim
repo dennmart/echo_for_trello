@@ -9,7 +9,7 @@
       .panel-heading
         h3.panel-title Users
       .panel-body
-        = @users_count
+        = User.count
 
 .row
   .col-md-4.col-md-offset-4
@@ -17,4 +17,15 @@
       .panel-heading
         h3.panel-title Cards
       .panel-body
-        = @cards_count
+        = Card.count
+
+.row
+  .col-md-4.col-md-offset-4
+    .panel.panel-default
+      .panel-heading
+        h3.panel-title Cards Created
+      .panel-body
+        p= CardLog.count
+        p #{CardLog.where(successful: true).count} successful
+        p #{CardLog.where(successful: false).count} unsuccessful
+        
