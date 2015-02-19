@@ -1,0 +1,35 @@
+.container
+  .page-header.text-center
+    = image_tag 'echo-for-trello-logo.png', width: '200px'
+    h1 Echo for Trello
+    h2 FAQ
+
+  h3 What does this site do?
+  p Echo for Trello makes it easy to automatically create Trello cards daily, weekly or monthly. Once you log in using your Trello account, you can select one of your Trello boards, then you can enter a card name, description and frequency you wish your card to be created. Then Echo for Trello will handle creating the card at that specified interval. That's all there is to it!
+
+  h3 Do you save my Trello login information?
+  p We receive access to your Trello account via OAuth. When you click on the 'Log in with Trello' button on the home page, you will be redirected to Trello's website to authorize Echo for Trello to use your Trello account. Once authorization is granted, we receive an access token that will allow us to create cards on your behalf. This is the only authentication information we store - we don't store anything else related to your Trello account.
+
+  h3 What permissions do you need from my Trello account?
+  p In order to create cards on your behalf from Echo for Trello, we need <strong>read</strong> and <strong>write</strong> access. This means Echo for Trello can read all of your boards and organizations, create and update cards, lists and boards, and leave comments on cards. Echo for Trello will not be able to read your email address or see your Trello password.
+
+  h3 I don't want Echo for Trello to use my Trello account anymore. How can I revoke access?
+  p You can always revoke the token we use directly in your Trello account.
+  ol
+    li Log in to your Trello account.
+    li Click on your name in the upper-right corner, and in the menu select <strong>Settings</strong>
+    li Under the <strong>Applications</strong> section, find the Echo for Trello entry, and click on <strong>Revoke</strong>.
+
+  h3 Can I specify the time the card is created?
+  p Unfortunately, not yet. All cards will be created at midnight, Pacific time, using the specified frequency (daily, weekly or monthly). But rest assured, soon you will be able to specify the exact time you want your card to be created!
+
+  h3 Do you work for Trello?
+  p As the page footer indicates, I am not affiliated, associated, authorized, endorsed by or in any way officially connected to Trello. I built this site to address one of my needs, and I wanted to share it with the world!
+
+  .row.buffer-top
+    .col-md-12.text-center
+      small Created out of love and passion by #{link_to "Dennis Martinez", "http://dennmart.com/", target: "_blank"}
+
+  .row.buffer-bottom
+    .col-md-12.text-center
+      small I am not affiliated, associated, authorized, endorsed by or in any way officially connected to #{link_to "Trello, Inc.", "https://trello.com", target: "_blank"}.

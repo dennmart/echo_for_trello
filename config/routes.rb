@@ -2,11 +2,13 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   root to: 'pages#home', id: 'home'
+
   resources 'boards' do
     member do
       post 'new_list'
     end
   end
+
   resources 'cards' do
     member do
       put 'update_status'
@@ -20,6 +22,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/auth/failure', to: redirect('/')
   get '/logout', to: 'sessions#destroy', as: 'logout'
+  get '/faq', to: 'pages#faq'
 
   Sidekiq::Web.use Rack::Auth::Basic do |username, password|
     username == ENV["SIDEKIQ_USERNAME"] && password == ENV["SIDEKIQ_PASSWORD"]
