@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get '/auth/failure', to: redirect('/')
   get '/logout', to: 'sessions#destroy', as: 'logout'
   get '/faq', to: 'pages#faq'
+  get '/admin', to: 'admin#index'
 
   Sidekiq::Web.use Rack::Auth::Basic do |username, password|
     username == ENV["SIDEKIQ_USERNAME"] && password == ENV["SIDEKIQ_PASSWORD"]
