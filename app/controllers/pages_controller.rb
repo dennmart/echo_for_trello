@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   include HighVoltage::StaticPage
 
-  before_filter :redirect_if_authenticated
+  before_filter :redirect_if_authenticated, only: [:home]
   layout 'static'
 
   private
