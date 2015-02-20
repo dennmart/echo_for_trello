@@ -38,7 +38,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.7)
     arel (6.0.0)
-    autoprefixer-rails (5.1.5)
+    autoprefixer-rails (5.1.7)
       execjs
       json
     binding_of_caller (0.7.2)
@@ -254,7 +254,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
-    timecop (0.7.1)
+    timecop (0.7.3)
     timers (4.0.1)
       hitimes
     tzinfo (1.2.2)
