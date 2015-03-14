@@ -2,6 +2,13 @@
   h3.text-center
     | We have not created any cards on Trello for you yet!
 - else
+  .row
+    .col-md-12.text-center
+      p
+        | Displayed times are in the <strong>#{current_user.time_zone || "UTC"}</strong> time zone.
+        br
+        | You can change your current time zone in your #{link_to "Settings", settings_path}.
+
   table.table.table-hover
     thead
       tr
@@ -15,7 +22,7 @@
           td= link_to log.card_id, card_path(log.card)
           td= log.card.title
           td= card_creation_status(log)
-          td= log.created_at.strftime("%B %-d, %Y %I:%M %p")
+          td= log.created_at.in_time_zone(current_user.time_zone).strftime("%B %-d, %Y %I:%M %p")
 
   .row
     .col-md-12.text-center
