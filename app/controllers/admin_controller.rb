@@ -7,7 +7,6 @@ class AdminController < ApplicationController
   private
 
   def admin_authenticate
-    # TODO: For now just check my own ID, but maybe fix down the road.
-    current_user.id == 1
+    current_user.admin?
   end
 end
