@@ -1,0 +1,19 @@
+.row
+  .col-md-2
+    p= link_to '« Back to boards', boards_path
+
+.row
+  .col-md-12
+    h2.text-center Settings
+
+= form_for current_user, url: setting_path(current_user), method: :put, html: { class: 'form-horizontal' } do |f|
+  .form-group
+    .col-md-2.col-md-offset-2.text-right
+      = f.label :time_zone, 'Time Zone:', class: 'control-label'
+    .col-md-4
+      = f.time_zone_select :time_zone, nil, {}, class: 'form-control'
+      span.help-block This will be used to properly display the times in the card logs.
+
+  .form-group
+    .col-md-12.text-center
+      = f.submit 'Save Settings', class: 'btn btn-primary'

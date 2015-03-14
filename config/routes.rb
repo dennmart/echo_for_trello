@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources 'settings', only: [:index, :update]
+
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/auth/failure', to: redirect('/')
   get '/logout', to: 'sessions#destroy', as: 'logout'
