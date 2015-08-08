@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.3'
 gem 'pg'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'sass-rails', '~> 5.0'
@@ -15,7 +15,7 @@ gem 'slim-rails', '~> 3.0'
 gem 'omniauth', '~> 1.2'
 gem 'omniauth-trello', '0.0.4'
 gem 'httparty', '~> 0.13.3'
-gem 'high_voltage', '~> 2.2.1'
+gem 'high_voltage', '~> 2.4'
 gem 'hogan_assets', '~> 1.6'
 gem 'kaminari', '~> 0.16'
 gem 'sidekiq', '~> 3.3'
@@ -28,7 +28,7 @@ group :development do
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-bundler', '~> 1.1'
   gem 'capistrano-rbenv', '~> 2.0'
-  gem 'capistrano-passenger', '0.0.2'
+  gem 'capistrano-passenger', '~> 0.1'
   gem 'capistrano-sidekiq', '~> 0.4'
 end
 
