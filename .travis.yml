@@ -1,0 +1,7 @@
+sudo: false
+language: ruby
+rvm:
+  - 2.2
+notifications:
+  email:
+    - travisci@dennmart.com
