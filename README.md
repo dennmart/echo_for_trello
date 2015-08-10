@@ -4,6 +4,8 @@ Echo for Trello is a web application to allow [Trello](https://trello.com/) user
 
 To see Echo for Trello in action, go to https://echofortrello.com/.
 
+[![Build Status](https://travis-ci.org/dennmart/echo_for_trello.svg?branch=master)](https://travis-ci.org/dennmart/echo_for_trello)
+
 ## Requirements
 
 Echo for Trello is a Ruby on Rails application, so Ruby is required. I prefer [rbenv](https://github.com/sstephenson/rbenv) for setting up Ruby. The app has been developed and running in production using Ruby 2.2.
