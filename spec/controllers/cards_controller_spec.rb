@@ -9,14 +9,17 @@ RSpec.describe CardsController, :type => :controller do
 
   describe "#index" do
     it "fetches the current user's cards" do
-      pending "Needs to stub Trello information"
       new_user = FactoryGirl.create(:user)
       user_card = FactoryGirl.create(:card, user: user)
       new_user_card = FactoryGirl.create(:card, user: new_user)
 
+      boards = double
+      expect_any_instance_of(TrelloApi).to receive(:boards).and_return(boards)
+
       get :index
       expect(assigns(:cards)).to include(user_card)
       expect(assigns(:cards)).to_not include(new_user_card)
+      expect(assigns(:boards)).to eq(boards)
     end
   end
 

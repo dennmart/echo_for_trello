@@ -36,11 +36,48 @@ RSpec.describe CardsHelper, :type => :helper do
   end
 
   describe "#board_name" do
-    pending
+    let(:boards) { [
+      { "id" => 1, "name" => "Board #1" },
+      { "id" => 2, "name" => "Board #2" },
+      { "id" => 3, "name" => "Board #3" }
+    ] }
+
+    it "iterates through the boards and returns the board name matching the specified ID" do
+      expect(helper.board_name(boards, 1)).to eq("Board #1")
+      expect(helper.board_name(boards, 2)).to eq("Board #2")
+      expect(helper.board_name(boards, 3)).to eq("Board #3")
+    end
+
+    it "returns '---' if a board cannot be found" do
+      expect(helper.board_name(boards, 12345)).to eq("---")
+    end
   end
 
   describe "#list_name" do
-    pending
+    let(:board_1_lists) { [
+      { "id" => 1, "name" => "List #1" },
+      { "id" => 2, "name" => "List #2" }
+    ] }
+    let(:board_2_lists) { [
+      { "id" => 3, "name" => "List #3" }
+    ] }
+    let(:boards) { [
+      { "id" => 1, "name" => "Board #1", "lists" => board_1_lists },
+      { "id" => 2, "name" => "Board #2", "lists" => board_2_lists }
+    ] }
+
+    it "iterates through the boards and its lists and returns the list name matching the specified list ID" do
+      expect(helper.list_name(boards, 1, 2)).to eq("List #2")
+      expect(helper.list_name(boards, 2, 3)).to eq("List #3")
+    end
+
+    it "returns '---' if a board cannot be found" do
+      expect(helper.list_name(boards, 123, 1)).to eq("---")
+    end
+
+    it "returns '---' if a list cannot be found" do
+      expect(helper.list_name(boards, 1, 3)).to eq("---")
+    end
   end
 
   describe "#card_frequency_text" do
