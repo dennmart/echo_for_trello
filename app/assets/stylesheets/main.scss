@@ -47,3 +47,15 @@ h2 {
 .buffer-bottom {
   margin-bottom: 25px;
 }
+
+.site-message {
+  margin-top: 10px;
+  margin-bottom: 0;
+  width: 500px;
+  text-align: center;
+
+  a {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}

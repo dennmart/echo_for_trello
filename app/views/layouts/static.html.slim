@@ -10,6 +10,7 @@ html
     meta name="description" content="Echo for Trello makes it easy to automatically create Trello cards daily, weekly or monthly."
     = csrf_meta_tags
   body
+    = render "shared/ifttt"
     = yield
 
     javascript:
