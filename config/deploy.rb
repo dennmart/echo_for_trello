@@ -37,7 +37,7 @@ set :deploy_to, '/srv/echo_for_trello'
 set :ssh_options, { port: ENV["ECHO_TRELLO_SSH_PORT"] }
 
 set :rbenv_type, :user
-set :rbenv_ruby, '2.2.2'
+set :rbenv_ruby, '2.2.3'
 
 namespace :deploy do
   after :restart, :clear_cache do
