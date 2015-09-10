@@ -10,6 +10,7 @@ class CreateTrelloCardWorker
     if trello_response.success?
       CardLog.create(card: card, user: user, successful: true)
     else
+      card.disable!
       message = "#{trello_response.code} #{trello_response.message} - #{trello_response.body.strip}"
       CardLog.create(card: card, user: user, successful: false, message: message)
     end

@@ -140,6 +140,22 @@ RSpec.describe Card, :type => :model do
     end
   end
 
+  describe "#disable!" do
+    let!(:card) { FactoryGirl.create(:card, next_run: 1.day.from_now) }
+
+    it "sets the `disabled` field to true" do
+      expect {
+        card.disable!
+      }.to change(card, :disabled).from(false).to(true)
+    end
+
+    it "sets the `next_run` field to nil" do
+      expect {
+        card.disable!
+      }.to change(card, :next_run).to(nil)
+    end
+  end
+
   describe ".create_pending_trello_cards" do
     before(:all) do
       Timecop.freeze
@@ -157,6 +173,12 @@ RSpec.describe Card, :type => :model do
       expect(CreateTrelloCardWorker).to receive(:perform_async).with(card_1.user_id, card_1.id)
       expect(CreateTrelloCardWorker).to receive(:perform_async).with(card_2.user_id, card_2.id)
       expect(CreateTrelloCardWorker).to_not receive(:perform_async).with(card_3.user_id, card_3.id)
+      Card.create_pending_trello_cards
+    end
+
+    it "does not call the async task to create a card if the card is disabled" do
+      card = FactoryGirl.create(:card, next_run: 1.hour.ago, disabled: true)
+      expect(CreateTrelloCardWorker).to_not receive(:perform_async).with(card.user_id, card.id)
       Card.create_pending_trello_cards
     end
   end

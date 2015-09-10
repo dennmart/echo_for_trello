@@ -53,8 +53,12 @@ class Card < ActiveRecord::Base
     frequency == FREQUENCY['Monthly']
   end
 
+  def disable!
+    update_attributes(disabled: true, next_run: nil)
+  end
+
   def self.create_pending_trello_cards
-    Card.where("next_run <= ?", Time.now).each do |card|
+    Card.where(disabled: false).where("next_run <= ?", Time.now).each do |card|
       CreateTrelloCardWorker.perform_async(card.user_id, card.id)
       card.set_next_run
     end
