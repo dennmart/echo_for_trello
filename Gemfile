@@ -18,7 +18,7 @@ gem 'httparty', '~> 0.13.3'
 gem 'high_voltage', '~> 2.4'
 gem 'hogan_assets', '~> 1.6'
 gem 'kaminari', '~> 0.16'
-gem 'sidekiq', '~> 3.3'
+gem 'sidekiq', '~> 3.5'
 gem 'sinatra', '~> 1.4', require: false
 gem 'whenever', '~> 0.9', require: false
 gem 'airbrake', '~> 4.1'
