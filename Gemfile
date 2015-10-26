@@ -44,6 +44,6 @@ end
 
 group :test do
   gem 'webmock'
-  gem 'shoulda-matchers', '~> 2.8'
+  gem 'shoulda-matchers', '~> 3.0'
   gem 'timecop', '~> 0.7'
 end

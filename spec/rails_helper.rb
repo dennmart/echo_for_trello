@@ -13,3 +13,10 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.include ControllerMethods, type: :controller
 end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
