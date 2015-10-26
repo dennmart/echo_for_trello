@@ -25,7 +25,10 @@ gem 'sinatra', '~> 1.4', require: false
 gem 'whenever', '~> 0.9', require: false
 gem 'airbrake', '~> 4.1'
 gem 'puma', '~> 2.14'
-gem 'rails_12factor'
+
+group :production do
+  gem 'rails_12factor'
+end
 
 group :development do
   gem 'pry-rails', '~> 0.3'
