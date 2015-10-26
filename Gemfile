@@ -24,6 +24,7 @@ gem 'sidekiq', '~> 3.5'
 gem 'sinatra', '~> 1.4', require: false
 gem 'whenever', '~> 0.9', require: false
 gem 'airbrake', '~> 4.1'
+gem 'rails_12factor'
 
 group :development do
   gem 'pry-rails', '~> 0.3'
