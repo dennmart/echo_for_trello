@@ -14,4 +14,4 @@ test:
 production:
   <<: *default
   username: trello_echo
-  url: <%= ENV['TRELLO_ECHO_DATABASE_URL'] %>
+  url: <%= ENV['DATABASE_URL'] %>
