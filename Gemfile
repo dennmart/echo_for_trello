@@ -20,7 +20,7 @@ gem 'httparty', '~> 0.13.3'
 gem 'high_voltage', '~> 2.4'
 gem 'hogan_assets', '~> 1.6'
 gem 'kaminari', '~> 0.16'
-gem 'sidekiq', '~> 3.5'
+gem 'sidekiq', '~> 4.0'
 gem 'sinatra', '~> 1.4', require: false
 gem 'whenever', '~> 0.9', require: false
 gem 'airbrake', '~> 4.1'
@@ -32,11 +32,11 @@ end
 
 group :development do
   gem 'pry-rails', '~> 0.3'
+  gem 'web-console', '~> 3.0'
 end
 
 group :development, :test do
   gem 'byebug'
-  gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'rspec-rails', '~> 3.2'
   gem 'factory_girl_rails', '~> 4.5'
