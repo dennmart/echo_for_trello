@@ -18,7 +18,7 @@ class Card < ActiveRecord::Base
   end
 
   def set_next_run
-    time = Time.now.beginning_of_day
+    time = Time.now.utc.beginning_of_day
 
     if frequency == FREQUENCY['Daily']
       update_attribute(:next_run, time.advance(days: 1))
