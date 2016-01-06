@@ -8,3 +8,6 @@ script:
 notifications:
   email:
     - travisci@dennmart.com
+env:
+  - ECHO_TRELLO_AIRBRAKE_API="1234567890"
+  - ECHO_TRELLO_AIRBRAKE_HOST="https://airbrake.com"
