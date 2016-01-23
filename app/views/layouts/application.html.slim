@@ -23,8 +23,6 @@ html
           li= link_to 'Settings', settings_path
           li= link_to 'Logout', logout_path
 
-    = render "shared/ifttt"
-
     .container
       .flash-messages
         - if flash[:notice]

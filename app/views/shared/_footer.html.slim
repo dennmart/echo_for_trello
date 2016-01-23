@@ -1,6 +1,11 @@
 .row.buffer-top
   .col-md-12.text-center
     hr
+
+    .container.site-message
+      .alert.alert-info role="alert"
+        p If you're an IFTTT user, check out #{link_to "Trello's IFTTT channel", "https://ifttt.com/trello", target: "_blank"}!
+
     ul.list-inline
       li= link_to "Home", root_path
       li= link_to "FAQ", faq_path
