@@ -7,4 +7,5 @@
     - group.each do |board|
       = link_to board_path(board["id"]), class: 'board-link' do
         .col-md-4.board-view.text-center
-          p= board["name"]
+          p class=(board["prefs"]["background"])
+            = board["name"]

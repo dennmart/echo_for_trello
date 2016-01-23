@@ -24,4 +24,40 @@
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+
+  &.blue {
+    background-color: #0079BF;
+  }
+
+  &.orange {
+    background-color: #D29034;
+  }
+
+  &.green {
+    background-color: #519839;
+  }
+
+  &.red {
+    background-color: #B04632;
+  }
+
+  &.purple {
+    background-color: #89609E;
+  }
+
+  &.pink {
+    background-color: #CD5A91;
+  }
+
+  &.lime {
+    background-color: #4BBF6B;
+  }
+
+  &.sky {
+    background-color: #00AECC;
+  }
+
+  &.grey {
+    background-color: #838C91;
+  }
 }
