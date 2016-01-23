@@ -8,7 +8,7 @@ class TrelloApi
   end
 
   def boards(options = {})
-    trello_options = { filter: 'members,open,organization' }.merge(options)
+    trello_options = { filter: 'open' }.merge(options)
     self.class.get '/members/me/boards', query: @options.merge(trello_options)
   end
 
