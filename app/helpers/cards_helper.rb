@@ -31,6 +31,10 @@ module CardsHelper
       "Every #{Date::DAYNAMES[card.frequency_period]}"
     elsif card.monthly?
       "Every month on the #{card.frequency_period.ordinalize}"
+    elsif card.weekdays?
+      "Monday through Friday"
+    elsif card.weekends?
+      "Saturday and Sunday"
     end
   end
 

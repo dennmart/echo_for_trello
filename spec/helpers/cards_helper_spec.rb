@@ -95,5 +95,15 @@ RSpec.describe CardsHelper, :type => :helper do
       card = FactoryGirl.build(:card, :monthly, frequency_period: 10)
       expect(helper.card_frequency_text(card)).to eq("Every month on the 10th")
     end
+
+    it "returns 'Monday Through Friday' if the card is generated on weekdays" do
+      card = FactoryGirl.build(:card, :weekdays)
+      expect(helper.card_frequency_text(card)).to eq("Monday through Friday")
+    end
+
+    it "returns 'Saturday and Sunday' if the card is generated on weekends" do
+      card = FactoryGirl.build(:card, :weekends)
+      expect(helper.card_frequency_text(card)).to eq("Saturday and Sunday")
+    end
   end
 end

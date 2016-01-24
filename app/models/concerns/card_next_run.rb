@@ -29,9 +29,29 @@ module CardNextRun
     end
   end
 
+  def weekdays(card)
+    if tomorrow.saturday? || tomorrow.sunday?
+      time.next_week(:monday)
+    else
+      time.advance(days: 1)
+    end
+  end
+
+  def weekends(card)
+    if tomorrow.saturday? || tomorrow.sunday?
+      time.advance(days: 1)
+    else
+      time.advance(days: (6 - time.wday))
+    end
+  end
+
   private
 
   def time
     Time.now.utc.beginning_of_day
+  end
+
+  def tomorrow
+    time + 1.day
   end
 end

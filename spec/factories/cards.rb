@@ -16,5 +16,13 @@ FactoryGirl.define do
       frequency Card::FREQUENCY['Monthly']
       frequency_period 1
     end
+
+    trait :weekdays do
+      frequency Card::FREQUENCY['Weekdays']
+    end
+
+    trait :weekends do
+      frequency Card::FREQUENCY['Weekends']
+    end
   end
 end

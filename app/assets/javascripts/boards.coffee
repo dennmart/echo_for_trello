@@ -68,6 +68,12 @@ $ ->
       else if this.value == '3'
         template = HoganTemplates['frequency_monthly_options']
         templateData = monthlyOptions
+      else if this.value == '4'
+        template = HoganTemplates['frequency_weekday_options']
+        templateData = {}
+      else if this.value == '5'
+        template = HoganTemplates['frequency_weekend_options']
+        templateData = {}
       $('#frequency_period_group').html(template.render(templateData))
       $('#frequency_period_warning').html('')
 
@@ -100,6 +106,10 @@ $ ->
       $('#card_frequency_period').val(frequencyPeriodValue)
       if frequencyPeriodValue > 28
         $('#frequency_period_warning').html(HoganTemplates['frequency_period_warning'].render({ 'card_day': frequencyPeriodValue }))
+    else if $('#card_frequency').val() == '4'
+      $('#frequency_period_group').html(HoganTemplates['frequency_weekday_options'].render())
+    else if $('#card_frequency').val() == '5'
+      $('#frequency_period_group').html(HoganTemplates['frequency_weekend_options'].render())
 
   $(document).ready(frequencyPeriodOptions)
 

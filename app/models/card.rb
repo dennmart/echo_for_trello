@@ -1,5 +1,11 @@
 class Card < ActiveRecord::Base
-  FREQUENCY = { 'Daily' => 1, 'Weekly' => 2, 'Monthly' => 3 }
+  FREQUENCY = {
+    'Daily'    => 1,
+    'Weekly'   => 2,
+    'Monthly'  => 3,
+    'Weekdays' => 4,
+    'Weekends' => 5
+  }
 
   default_scope { order(created_at: :desc) }
 
@@ -31,6 +37,14 @@ class Card < ActiveRecord::Base
 
   def monthly?
     frequency == FREQUENCY['Monthly']
+  end
+
+  def weekdays?
+    frequency == FREQUENCY['Weekdays']
+  end
+
+  def weekends?
+    frequency == FREQUENCY['Weekends']
   end
 
   def disable!

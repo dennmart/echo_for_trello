@@ -26,6 +26,16 @@ RSpec.describe Card, :type => :model do
       card.frequency_period = 1
       expect(card).to be_valid
     end
+
+    it "does not need :frequency_period if the frequency is 'Weekdays'" do
+      card = FactoryGirl.build(:card, frequency: Card::FREQUENCY['Weekdays'], frequency_period: nil)
+      expect(card).to be_valid
+    end
+
+    it "does not need :frequency_period if the frequency is 'Weekends'" do
+      card = FactoryGirl.build(:card, frequency: Card::FREQUENCY['Weekends'], frequency_period: nil)
+      expect(card).to be_valid
+    end
   end
 
   describe "#trello_api_parameters" do
@@ -99,6 +109,50 @@ RSpec.describe Card, :type => :model do
           card.set_next_run
           expect(card.next_run.month).to eq(2)
           expect(card.next_run.day).to eq(28)
+        end
+      end
+    end
+
+    context "for weekday cards" do
+      it "sets the next run to the next day if the next day is a weekday" do
+        # January 28, 2015 == Wednesday
+        Timecop.freeze(Time.new(2015, 1, 28, 12, 0, 0)) do
+          card = FactoryGirl.create(:card, frequency: Card::FREQUENCY['Weekdays'])
+          card.set_next_run
+          expect(card.next_run.wday).to eq(Date::DAYNAMES.index("Thursday"))
+          expect(card.next_run.day).to eq(29)
+        end
+      end
+
+      it "sets the next run to the following Monday if the next day is a weekend" do
+        # January 23, 2015 == Friday
+        Timecop.freeze(Time.new(2015, 1, 23, 12, 0, 0)) do
+          card = FactoryGirl.create(:card, frequency: Card::FREQUENCY['Weekdays'])
+          card.set_next_run
+          expect(card.next_run.wday).to eq(Date::DAYNAMES.index("Monday"))
+          expect(card.next_run.day).to eq(26)
+        end
+      end
+    end
+
+    context "for weekend cards" do
+      it "sets the next run to the next day if the next day is a weekend" do
+        # January 24, 2015 == Saturday
+        Timecop.freeze(Time.new(2015, 1, 24, 12, 0, 0)) do
+          card = FactoryGirl.create(:card, frequency: Card::FREQUENCY['Weekends'])
+          card.set_next_run
+          expect(card.next_run.wday).to eq(Date::DAYNAMES.index("Sunday"))
+          expect(card.next_run.day).to eq(25)
+        end
+      end
+
+      it "sets the next run to the following Saturday if the next day is a weekday" do
+        # January 25, 2015 == Sunday
+        Timecop.freeze(Time.new(2015, 1, 25, 12, 0, 0)) do
+          card = FactoryGirl.create(:card, frequency: Card::FREQUENCY['Weekends'])
+          card.set_next_run
+          expect(card.next_run.wday).to eq(Date::DAYNAMES.index("Saturday"))
+          expect(card.next_run.day).to eq(31)
         end
       end
     end
