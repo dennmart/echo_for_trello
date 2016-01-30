@@ -25,7 +25,7 @@ gem 'sidekiq', '~> 4.0'
 gem 'sinatra', '~> 1.4', require: false
 gem 'whenever', '~> 0.9', require: false
 gem 'airbrake', '~> 5.0'
-gem 'puma', '~> 2.14'
+gem 'puma', '~> 2.16'
 
 group :production do
   gem 'rails_12factor'
@@ -33,18 +33,18 @@ end
 
 group :development do
   gem 'pry-rails', '~> 0.3'
-  gem 'web-console', '~> 3.0'
+  gem 'web-console', '~> 3.1'
 end
 
 group :development, :test do
   gem 'byebug'
   gem 'spring'
-  gem 'rspec-rails', '~> 3.2'
+  gem 'rspec-rails', '~> 3.4'
   gem 'factory_girl_rails', '~> 4.5'
 end
 
 group :test do
   gem 'webmock'
-  gem 'shoulda-matchers', '~> 3.0'
+  gem 'shoulda-matchers', '~> 3.1'
   gem 'timecop', '~> 0.7'
 end
