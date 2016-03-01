@@ -24,7 +24,7 @@ gem 'kaminari', '~> 0.16'
 gem 'sidekiq', '~> 4.0'
 gem 'sinatra', '~> 1.4', require: false
 gem 'whenever', '~> 0.9', require: false
-gem 'airbrake', '~> 5.0'
+gem 'airbrake', '~> 5.1'
 gem 'puma', '~> 3.0'
 
 group :production do
