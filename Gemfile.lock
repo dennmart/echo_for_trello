@@ -240,7 +240,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  airbrake (~> 5.0)
+  airbrake (~> 5.1)
   bootstrap-sass (~> 3.3)
   byebug
   coffee-rails (~> 4.1.0)
