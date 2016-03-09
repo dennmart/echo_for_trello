@@ -21,11 +21,11 @@ gem 'httparty', '~> 0.13.3'
 gem 'high_voltage', '~> 2.4'
 gem 'hogan_assets', '~> 1.6'
 gem 'kaminari', '~> 0.16'
-gem 'sidekiq', '~> 4.0'
+gem 'sidekiq', '~> 4.1'
 gem 'sinatra', '~> 1.4', require: false
 gem 'whenever', '~> 0.9', require: false
 gem 'airbrake', '~> 5.1'
-gem 'puma', '~> 3.0'
+gem 'puma', '~> 3.1'
 
 group :production do
   gem 'rails_12factor'

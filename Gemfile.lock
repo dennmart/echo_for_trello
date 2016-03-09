@@ -125,7 +125,7 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
-    puma (3.0.2)
+    puma (3.1.0)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -189,7 +189,7 @@ GEM
       tilt (>= 1.1, < 3)
     shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
-    sidekiq (4.1.0)
+    sidekiq (4.1.1)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
       redis (~> 3.2, >= 3.2.1)
@@ -229,7 +229,7 @@ GEM
       activemodel (>= 4.2)
       debug_inspector
       railties (>= 4.2)
-    webmock (1.24.1)
+    webmock (1.24.2)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
@@ -255,13 +255,13 @@ DEPENDENCIES
   omniauth-trello (= 0.0.4)
   pg
   pry-rails (~> 0.3)
-  puma (~> 3.0)
+  puma (~> 3.1)
   rails (= 4.2.6)
   rails_12factor
   rspec-rails (~> 3.4)
   sass-rails (~> 5.0)
   shoulda-matchers (~> 3.1)
-  sidekiq (~> 4.0)
+  sidekiq (~> 4.1)
   sinatra (~> 1.4)
   slim-rails (~> 3.0)
   spring
