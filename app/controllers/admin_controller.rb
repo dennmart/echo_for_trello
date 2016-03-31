@@ -7,6 +7,8 @@ class AdminController < ApplicationController
   private
 
   def admin_authenticate
-    current_user.admin?
+    unless current_user && current_user.admin?
+      raise ActionController::RoutingError.new('Not Found')
+    end
   end
 end
