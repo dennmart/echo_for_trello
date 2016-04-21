@@ -5,11 +5,11 @@ RSpec.describe ContactController, type: :controller do
     context "invalid params" do
       it "does not enqueue the job to send the message" do
         expect(SendContactMessageWorker).to_not receive(:perform_async)
-        post :create, name: "John Doe", email: "johndoe@test.com"
+        post :create, name: "John Doe", email: "johndoe@test.com", message: ""
       end
 
       it "renders the :index view" do
-        post :create, name: "John Doe", email: "johndoe@test.com"
+        post :create, name: "John Doe", email: "johndoe@test.com", message: ""
         expect(response).to_not be_redirect
         expect(response).to render_template(:index)
       end
