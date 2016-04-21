@@ -8,7 +8,7 @@ To see Echo for Trello in action, go to https://echofortrello.com/.
 
 ## Requirements
 
-Echo for Trello is a Ruby on Rails application, so Ruby is required. I prefer [rbenv](https://github.com/sstephenson/rbenv) for setting up Ruby. The app has been developed and running in production using Ruby 2.2.
+Echo for Trello is a Ruby on Rails application, so Ruby is required. I prefer [rbenv](https://github.com/sstephenson/rbenv) for setting up Ruby. The app has been developed and running in production using Ruby 2.3.0.
 
 ## Development Setup
 
@@ -20,12 +20,20 @@ Echo for Trello is a Ruby on Rails application, so Ruby is required. I prefer [r
 
 ## Environment Variables
 
-To communicate with the Trello API, you must set your Trello Developer API key and secret as environment variables. You can generate these keys at https://trello.com/1/appKey/generate.
+To communicate with the Trello API, you must set your Trello Developer API key and secret as environment variables. You can generate these keys at https://trello.com/app-key.
 
 The environment variables needed to be set are:
 
 * `TRELLO_KEY`
 * `TRELLO_SECRET`
+
+If you want to be set up email in the app, you need to set the following environment variables:
+
+  * `MAILER_HOSTNAME`
+  * `MAILER_PORT`
+  * `MAILER_DOMAIN`
+  * `MAILER_USERNAME`
+  * `MAILER_PASSWORD`
 
 ## Contribute
 
