@@ -26,6 +26,7 @@ gem 'sinatra', '~> 1.4', require: false
 gem 'whenever', '~> 0.9', require: false
 gem 'airbrake', '~> 5.1'
 gem 'puma', '~> 3.4.0'
+gem 'analytics-ruby', '~> 2.0.13', require: 'segment'
 
 group :production do
   gem 'rails_12factor'
