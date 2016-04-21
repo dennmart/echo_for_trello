@@ -14,4 +14,5 @@
 /tmp/pids
 /tmp/sessions
 /tmp/sockets
+/tmp/letter_opener
 .vagrant

@@ -34,6 +34,7 @@ end
 group :development do
   gem 'pry-rails', '~> 0.3'
   gem 'web-console', '~> 3.1'
+  gem 'letter_opener', '~> 1.4.1'
 end
 
 group :development, :test do
