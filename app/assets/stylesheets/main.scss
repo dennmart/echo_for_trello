@@ -28,8 +28,14 @@ h2 {
 }
 
 .flash-messages p {
+  text-align: center;
+  font-weight: bold;
   padding: 10px;
   font-size: 18px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border: 1px solid #CCC;
 }
 
 .navbar-brand {

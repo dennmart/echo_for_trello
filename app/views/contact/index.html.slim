@@ -1,0 +1,39 @@
+.container
+  .page-header.text-center
+    = image_tag 'echo-for-trello-logo.png', width: '200px'
+    h1 Echo for Trello
+    h2 Contact
+
+  - if flash[:notice]
+    .container
+      .row
+        .col-md-8.col-md-offset-2
+          .flash-messages
+            p.bg-success= flash[:notice]
+
+  .row
+    .col-md-12.text-center
+      p I hope you're finding Echo for Trello useful! If you have any suggestions, questions, found a bug, or anything else, please send a message using this form.
+      p I can also be reached on Twitter (<a href="https://twitter.com/dennmart" target="_blank">@dennmart</a>) if you prefer to chat there.
+
+  .row
+    .col-md-6.col-md-offset-3
+      = form_tag contact_index_path, class: "form-horizontal" do
+        .form-group
+          = label_tag :name, "Name", class: "col-md-4 control-label"
+          .col-md-8
+            = text_field_tag :name, nil, placeholder: "Your name", class: "form-control"
+        .form-group
+          = label_tag :email, "Email address", class: "col-md-4 control-label"
+          .col-md-8
+            = text_field_tag :email, nil, placeholder: "Your email address", class: "form-control"
+            .help-block.small Your email will only be used for me to get back to you!
+        .form-group
+          = label_tag :message, "Message", class: "col-md-4 control-label"
+          .col-md-8
+            = text_area_tag :message, nil, rows: 10, class: "form-control"
+        .form-group
+          .col-md-12.text-center
+            = submit_tag "Send Message", class: "btn btn-primary"
+
+  = render 'shared/footer'

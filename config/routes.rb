@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   end
 
   resources 'settings', only: [:index, :update]
+  resources 'contact', only: [:index, :create]
 
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/auth/failure', to: redirect('/')

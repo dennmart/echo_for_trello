@@ -39,4 +39,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Set environment variables for testing purposes.
+  ENV["DEFAULT_EMAIL_SENDER"] = "no-reply@echofortrello.com"
 end
