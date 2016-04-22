@@ -16,6 +16,8 @@ class Card < ActiveRecord::Base
   validates :frequency, inclusion: FREQUENCY.values
   validates :frequency_period, presence: true, if: :frequency_needs_period?
 
+  after_create :track_card_creation_event
+
   paginates_per 10
 
   def trello_api_parameters
@@ -62,5 +64,11 @@ class Card < ActiveRecord::Base
 
   def frequency_needs_period?
     frequency == FREQUENCY['Weekly'] || frequency == FREQUENCY['Monthly']
+  end
+
+  def track_card_creation_event
+    event_data = { event: "Card created", user_id: user_id, properties: { frequency: FREQUENCY.invert[frequency] } }
+    event_data[:properties].merge!(frequency_period: frequency_period) if frequency_period
+    SendAnalyticsEventWorker.perform_async(event_data)
   end
 end

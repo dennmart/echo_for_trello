@@ -38,6 +38,28 @@ RSpec.describe Card, :type => :model do
     end
   end
 
+  describe "callbacks" do
+    context "#track_card_creation_event" do
+      let(:user) { FactoryGirl.create(:user) }
+
+      it "enqueues a job to send card information to our analytics" do
+        expect(SendAnalyticsEventWorker).to receive(:perform_async).with(event: "Card created", user_id: user.id, properties: { frequency: "Weekdays" })
+        FactoryGirl.create(:card, :weekdays, user: user)
+      end
+
+      it "adds a frequency_period property to the job if it's set on the card" do
+        expect(SendAnalyticsEventWorker).to receive(:perform_async).with(hash_including(properties: { frequency: "Weekly", frequency_period: 4 }))
+        FactoryGirl.create(:card, :weekly, frequency_period: 4)
+      end
+
+      it "only enqueues the job on creation" do
+        card = FactoryGirl.create(:card, :weekdays)
+        expect(SendAnalyticsEventWorker).to_not receive(:perform_async)
+        card.update_attributes(title: "New title")
+      end
+    end
+  end
+
   describe "#trello_api_parameters" do
     it "returns the necessary parameters for creating a card through the Trello API" do
       card = FactoryGirl.build(:card, title: "Trello Card", description: "Echo for Trello is awesome!")
