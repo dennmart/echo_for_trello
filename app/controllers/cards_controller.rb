@@ -49,6 +49,6 @@ class CardsController < ApplicationController
   private
 
   def card_params
-    params.require(:card).permit(:title, :description, :trello_board_id, :trello_list_id, :frequency, :frequency_period)
+    params.require(:card).permit(:title, :description, :trello_board_id, :trello_list_id, :frequency, :frequency_period, :position)
   end
 end

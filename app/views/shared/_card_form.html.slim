@@ -28,6 +28,17 @@
   #frequency_period_warning
 
   .form-group
+    .col-md-2.col-md-offset-2.text-right
+      = label_tag "Position", nil, class: "control-label"
+    .col-md-4
+      = f.label :position, for: nil, class: "radio-inline" do
+        = f.radio_button :position, ""
+        | Bottom
+      = f.label :position, for: nil, class: "radio-inline" do
+        = f.radio_button :position, "top"
+        | Top
+
+  .form-group
     .col-md-12.text-center
       = f.hidden_field :trello_board_id
       = hidden_field_tag :frequency_period_value, card.frequency_period
