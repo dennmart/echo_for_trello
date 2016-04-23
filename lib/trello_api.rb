@@ -23,4 +23,8 @@ class TrelloApi
   def create_card(list_id, card_info)
     self.class.post "/lists/#{list_id}/cards", query: @options, body: card_info
   end
+
+  def update_card_position(card_id, position)
+    self.class.put "/cards/#{card_id}/pos", query: @options, body: { value: position }
+  end
 end

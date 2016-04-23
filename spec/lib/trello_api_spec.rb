@@ -43,9 +43,18 @@ RSpec.describe TrelloApi do
       card_info = { title: "Card Title", description: "Card Description" }
 
       stub_request(:post, "#{TrelloApi.base_uri}/lists/trello-list-id/cards?key=#{ENV['TRELLO_KEY']}&token=trello-oauth-key")
-        .with(body: card_info )
+        .with(body: card_info)
       trello = TrelloApi.new("trello-oauth-key")
       trello.create_card("trello-list-id", card_info)
+    end
+  end
+
+  describe "#update_card_position" do
+    it "sets a PUT request to update the specified card's position with the oAuth token and the position" do
+      stub_request(:put, "#{TrelloApi.base_uri}/cards/trello-card-id/pos?key=#{ENV['TRELLO_KEY']}&token=trello-oauth-key")
+        .with(body: { value: "top" })
+      trello = TrelloApi.new("trello-oauth-key")
+      trello.update_card_position("trello-card-id", "top")
     end
   end
 end

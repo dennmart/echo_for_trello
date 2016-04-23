@@ -9,6 +9,7 @@ class CreateTrelloCardWorker
     trello_response = trello.create_card(card.trello_list_id, card.trello_api_parameters)
     if trello_response.success?
       CardLog.create(card: card, user: user, successful: true)
+      UpdateCardPositionWorker.perform_async(user_id, card_id, trello_response["id"]) if card.position.present?
     else
       card.disable!
       message = "#{trello_response.code} #{trello_response.message} - #{trello_response.body.strip}"

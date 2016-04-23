@@ -16,6 +16,23 @@ RSpec.describe CreateTrelloCardWorker, :type => :worker do
       CreateTrelloCardWorker.new.perform(user.id, card.id)
     end
 
+    it "enqueues a job to update the card's position if the position field is present" do
+      card.update_attribute(:position, "top")
+      trello_api_response = double(success?: true)
+      allow(trello_api_response).to receive(:[]).with("id").and_return("trello-card-id")
+      allow_any_instance_of(TrelloApi).to receive(:create_card).and_return(trello_api_response)
+      expect(UpdateCardPositionWorker).to receive(:perform_async).with(user.id, card.id, "trello-card-id")
+      CreateTrelloCardWorker.new.perform(user.id, card.id)
+    end
+
+    it "does not enqueue a job to update the card's position if the position field is not present" do
+      card.update_attribute(:position, nil)
+      trello_api_response = double(success?: true)
+      allow_any_instance_of(TrelloApi).to receive(:create_card).and_return(trello_api_response)
+      expect(UpdateCardPositionWorker).to_not receive(:perform_async)
+      CreateTrelloCardWorker.new.perform(user.id, card.id)
+    end
+
     context "card logs" do
       it "creates a successful log entry if the API response is successful" do
         trello_api_response = double(success?: true)
