@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.3.1'
 
-gem 'rails', '4.2.6'
+gem 'rails', '5.0.0.rc1'
 gem 'sprockets-rails', '~> 2.3'
 gem 'pg'
 gem 'bootstrap-sass', '~> 3.3'
@@ -22,7 +22,7 @@ gem 'high_voltage', '~> 3.0.0'
 gem 'hogan_assets', '~> 1.6'
 gem 'kaminari', '~> 0.16'
 gem 'sidekiq', '~> 4.1'
-gem 'sinatra', '~> 1.4', require: false
+gem 'sinatra', github: 'sinatra/sinatra', require: false
 gem 'whenever', '~> 0.9', require: false
 gem 'airbrake', '~> 5.1'
 gem 'puma', '~> 3.4.0'
@@ -41,7 +41,7 @@ end
 group :development, :test do
   gem 'byebug'
   gem 'spring'
-  gem 'rspec-rails', '~> 3.4'
+  gem 'rspec-rails', '~> 3.5.0.beta3'
   gem 'factory_girl_rails', '~> 4.7.0'
 end
 
@@ -49,4 +49,5 @@ group :test do
   gem 'webmock'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'timecop', '~> 0.7'
+  gem 'rails-controller-testing', '~> 0.1.1'
 end

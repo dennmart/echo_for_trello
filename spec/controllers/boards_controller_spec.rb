@@ -30,7 +30,7 @@ RSpec.describe BoardsController, :type => :controller do
 
     it "redirects unauthenticated users to the home page" do
       session[:user_id] = nil
-      get :show, id: 1
+      get :show, params: { id: 1 }
       expect(response).to redirect_to(root_url)
     end
 
@@ -38,7 +38,7 @@ RSpec.describe BoardsController, :type => :controller do
       expect(TrelloApi).to receive(:new).with(user.oauth_token).and_return(trello)
       expect(trello).to receive(:board).with("123", { lists: 'open', cards: 'open' }).and_return(board)
 
-      get :show, id: 123
+      get :show, params: { id: 123 }
       expect(assigns(:board)).to eq(board)
     end
 
@@ -46,7 +46,7 @@ RSpec.describe BoardsController, :type => :controller do
       allow(TrelloApi).to receive(:new).and_return(trello)
       allow(trello).to receive(:board).and_return(board)
 
-      get :show, id: 123
+      get :show, params: { id: 123 }
       card = assigns(:card)
       expect(card.trello_board_id).to eq(board["id"])
     end
@@ -62,7 +62,7 @@ RSpec.describe BoardsController, :type => :controller do
 
     it "redirects unauthenticated users to the home page" do
       session[:user_id] = nil
-      post :new_list, id: 123, list_name: "Brand-New List"
+      post :new_list, params: { id: 123, list_name: "Brand-New List" }
       expect(response).to redirect_to(root_url)
     end
 
@@ -76,11 +76,11 @@ RSpec.describe BoardsController, :type => :controller do
       it "creates a new list with the specified list params" do
         expect(TrelloApi).to receive(:new).with(user.oauth_token).and_return(trello)
         expect(trello).to receive(:create_list).with("123", "Brand-New List").and_return(trello_response)
-        post :new_list, id: 123, list_name: "Brand-New List"
+        post :new_list, params: { id: 123, list_name: "Brand-New List" }
       end
 
       it "returns a JSON response indicating a successful request" do
-        post :new_list, id: 123, list_name: "Brand-New List"
+        post :new_list, params: { id: 123, list_name: "Brand-New List" }
         expect(response.status).to eq(200)
 
         json_response = JSON.parse(response.body)
@@ -93,7 +93,7 @@ RSpec.describe BoardsController, :type => :controller do
       let(:trello_response) { double("code" => 401, "message" => "invalid board name") }
 
       it "returns a JSON response with an error message indicating a failed request" do
-        post :new_list, id: 123, list_name: "Brand-New List"
+        post :new_list, params: { id: 123, list_name: "Brand-New List" }
         expect(response.status).to eq(422)
 
         json_response = JSON.parse(response.body)
@@ -115,23 +115,23 @@ RSpec.describe BoardsController, :type => :controller do
 
       it "creates a new card in the database" do
         expect {
-          post :create, card: card_params
+          post :create, params: { card: card_params }
         }.to change(Card, :count).by(1)
       end
 
       it "sets the current user as the card's user" do
-        post :create, card: card_params
+        post :create, params: { card: card_params }
         card = Card.last
         expect(card.user).to eq(user)
       end
 
       it "sets the card's next run" do
         expect_any_instance_of(Card).to receive(:set_next_run)
-        post :create, card: card_params
+        post :create, params: { card: card_params }
       end
 
       it "redirects to the cards list" do
-        post :create, card: card_params
+        post :create, params: { card: card_params }
         expect(response).to redirect_to(cards_path)
       end
     end
@@ -146,18 +146,18 @@ RSpec.describe BoardsController, :type => :controller do
 
       it "does not create a new card in the database" do
         expect {
-          post :create, card: card_params
+          post :create, params: { card: card_params }
         }.to_not change(Card, :count)
       end
 
       it "fetches the Trello board from the API again" do
         expect(TrelloApi).to receive(:new).with(user.oauth_token).and_return(trello)
         expect(trello).to receive(:board).with("123", { lists: 'open', cards: 'open' })
-        post :create, card: card_params
+        post :create, params: { card: card_params }
       end
 
       it "renders the 'show' action" do
-        post :create, card: card_params
+        post :create, params: { card: card_params }
         expect(response).to render_template(:show)
       end
     end
