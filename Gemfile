@@ -26,6 +26,7 @@ gem 'sinatra', '~> 1.4', require: false
 gem 'airbrake', '~> 5.3.0'
 gem 'puma', '~> 3.4.0'
 gem 'analytics-ruby', '~> 2.0.13', require: 'segment'
+gem 'clockwork', '~> 2.0.0'
 
 group :production do
   gem 'rails_12factor'
