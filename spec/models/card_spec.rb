@@ -241,6 +241,10 @@ RSpec.describe Card, :type => :model do
       Timecop.return
     end
 
+    before(:each) do
+      allow(Snitcher).to receive(:snitch)
+    end
+
     it "finds all cards where next_run is due and calls the async task to create the cards" do
       card_1 = FactoryGirl.create(:card, next_run: 1.hour.ago)
       card_2 = FactoryGirl.create(:card, next_run: 30.minutes.ago)
@@ -255,6 +259,11 @@ RSpec.describe Card, :type => :model do
     it "does not call the async task to create a card if the card is disabled" do
       card = FactoryGirl.create(:card, next_run: 1.hour.ago, disabled: true)
       expect(CreateTrelloCardWorker).to_not receive(:perform_async).with(card.user_id, card.id)
+      Card.create_pending_trello_cards
+    end
+
+    it "pings Dead Man's Snitch" do
+      expect(Snitcher).to receive(:snitch)
       Card.create_pending_trello_cards
     end
   end

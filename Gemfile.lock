@@ -216,6 +216,7 @@ GEM
       railties (>= 3.1, < 5.0)
       slim (~> 3.0)
     slop (3.6.0)
+    snitcher (0.4.0)
     spring (1.7.1)
     sprockets (3.6.0)
       concurrent-ruby (~> 1.0)
@@ -273,6 +274,7 @@ DEPENDENCIES
   sidekiq (~> 4.1.2)
   sinatra (~> 1.4)
   slim-rails (~> 3.0)
+  snitcher (~> 0.4.0)
   spring
   sprockets-rails (~> 2.3)
   timecop (~> 0.7)

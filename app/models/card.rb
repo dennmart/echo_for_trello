@@ -58,6 +58,7 @@ class Card < ActiveRecord::Base
       CreateTrelloCardWorker.perform_async(card.user_id, card.id)
       card.set_next_run
     end
+    Snitcher.snitch(ENV["ECHO_FOR_TRELLO_DEAD_MAN_SNITCH"])
   end
 
   private
