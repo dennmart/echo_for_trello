@@ -17,9 +17,4 @@ class User < ActiveRecord::Base
       user.oauth_token = auth["credentials"]["token"]
     end
   end
-
-  def admin?
-    # TODO: Add real roles (or at least a flag) instead of just checking my ID.
-    id == 1
-  end
 end
