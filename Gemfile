@@ -23,7 +23,6 @@ gem 'hogan_assets', '~> 1.6'
 gem 'kaminari', '~> 0.16'
 gem 'sidekiq', '~> 4.1.2'
 gem 'sinatra', '~> 1.4', require: false
-gem 'whenever', '~> 0.9', require: false
 gem 'airbrake', '~> 5.3.0'
 gem 'puma', '~> 3.4.0'
 gem 'analytics-ruby', '~> 2.0.13', require: 'segment'
