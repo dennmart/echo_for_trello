@@ -1,13 +1,5 @@
 .row
   .col-md-12
-    .alert.alert-info role="alert"
-      p
-        strong Notice: 
-        | From Monday, June 13 until Tuesday, June 21, Echo For Trello was not generating any cards due to a server issue that I was unaware of. The problem has been corrected, so your cards should be automatically generated again as expected (as of Tuesday, June 21).
-      p I apologize for any inconvenience this caused, and will be taking steps to make sure these types of issues are dealt with quickly.
-
-.row
-  .col-md-12
     h2.text-center Select the board where you want to create a recurring card
 
 - @boards.in_groups_of(3, false) do |group|
