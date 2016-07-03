@@ -42,7 +42,7 @@ end
 group :development, :test do
   gem 'byebug'
   gem 'spring'
-  gem 'rspec-rails', '~> 3.4'
+  gem 'rspec-rails', '~> 3.5.0'
   gem 'factory_girl_rails', '~> 4.7.0'
 end
 
