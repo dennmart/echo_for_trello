@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  before_filter :authenticate
+  before_action :authenticate
 
   def index
     @trello = TrelloApi.new(current_user.oauth_token)

@@ -28,7 +28,7 @@ RSpec.describe CardsController, :type => :controller do
       card = FactoryGirl.create(:card, user: user)
 
       expect {
-        delete :destroy, id: card.id
+        delete :destroy, params: { id: card.id }
       }.to change(Card, :count).by(-1)
     end
 
@@ -36,7 +36,7 @@ RSpec.describe CardsController, :type => :controller do
       new_user_card = FactoryGirl.create(:card)
 
       expect {
-        delete :destroy, id: new_user_card.id
+        delete :destroy, params: { id: new_user_card.id }
       }.to_not change(Card, :count)
     end
   end
@@ -46,7 +46,7 @@ RSpec.describe CardsController, :type => :controller do
       card = FactoryGirl.create(:card, user: user, disabled: false)
 
       expect {
-        put :update_status, id: card.id
+        put :update_status, params: { id: card.id }
         card.reload
       }.to change(card, :disabled).from(false).to(true)
     end
@@ -55,7 +55,7 @@ RSpec.describe CardsController, :type => :controller do
       card = FactoryGirl.create(:card, user: user, disabled: true)
 
       expect {
-        put :update_status, id: card.id
+        put :update_status, params: { id: card.id }
         card.reload
       }.to change(card, :disabled).from(true).to(false)
     end
@@ -64,7 +64,7 @@ RSpec.describe CardsController, :type => :controller do
       card = FactoryGirl.create(:card)
 
       expect {
-        put :update_status, id: card.id
+        put :update_status, params: { id: card.id }
         card.reload
       }.to_not change(card, :disabled)
     end

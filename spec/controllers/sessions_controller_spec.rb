@@ -6,13 +6,13 @@ RSpec.describe SessionsController, :type => :controller do
   describe "#create" do
     it "sets the user ID in the session" do
       expect(User).to receive(:from_omniauth).and_return(user)
-      get :create, "provider"=>"trello", oauth_token: "token", oauth_verifier: "verifier"
+      get :create, params: { provider: "trello", oauth_token: "token", oauth_verifier: "verifier" }
       expect(session[:user_id]).to eq(user.id)
     end
 
     it "redirects to root" do
       expect(User).to receive(:from_omniauth).and_return(user)
-      get :create, "provider"=>"trello", oauth_token: "token", oauth_verifier: "verifier"
+      get :create, params: { provider: "trello", oauth_token: "token", oauth_verifier: "verifier" }
       expect(response).to redirect_to(boards_url)
     end
   end

@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_filter :authenticate
+  before_action :authenticate
 
   def index
     @cards = current_user.cards.page(params[:page])
