@@ -4,6 +4,15 @@ RSpec.describe ContactMailer, type: :mailer do
   describe "#send_contact_message" do
     let(:email) { ContactMailer.send_contact_message("John Doe", "johndoe@test.com", "This is my message!") }
 
+    before(:all) do
+      @default_email_sender = ENV["DEFAULT_EMAIL_SENDER"]
+      ENV["DEFAULT_EMAIL_SENDER"] = "default@test.com"
+    end
+
+    after(:all) do
+      ENV["DEFAULT_EMAIL_SENDER"] = @default_email_sender
+    end
+
     it "sets the :from header using the specified name and email" do
       expect(email.from).to include("johndoe@test.com")
     end
