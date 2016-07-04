@@ -23,7 +23,7 @@ gem 'hogan_assets', '~> 1.6'
 gem 'kaminari', '~> 0.16'
 gem 'sidekiq', '~> 4.1.2'
 gem 'sinatra', github: "sinatra/sinatra", require: nil
-gem 'airbrake', '~> 5.3.0'
+gem 'airbrake', '~> 5.4.1'
 gem 'puma', '~> 3.4.0'
 gem 'analytics-ruby', '~> 2.0.13', require: 'segment'
 gem 'clockwork', '~> 2.0.0'
