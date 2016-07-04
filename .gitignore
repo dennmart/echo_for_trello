@@ -10,9 +10,6 @@
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
-/tmp/cache
-/tmp/pids
-/tmp/sessions
-/tmp/sockets
-/tmp/letter_opener
+/tmp/*
+!/tmp/.keep
 .vagrant
