@@ -8,10 +8,7 @@ gem 'pg'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
+gem 'coffee-rails', '~> 4.2.1'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'slim-rails', '~> 3.0'
@@ -25,7 +22,7 @@ gem 'sidekiq', '~> 4.1.2'
 gem 'sinatra', github: "sinatra/sinatra", require: nil
 gem 'airbrake', '~> 5.4.1'
 gem 'puma', '~> 3.4.0'
-gem 'analytics-ruby', '~> 2.0.13', require: 'segment'
+gem 'analytics-ruby', '~> 2.1.0', require: 'segment'
 gem 'clockwork', '~> 2.0.0'
 gem 'snitcher', '~> 0.4.0'
 
@@ -35,14 +32,14 @@ end
 
 group :development do
   gem 'pry-rails', '~> 0.3'
-  gem 'web-console', '~> 3.1'
+  gem 'web-console', '~> 3.3.1'
   gem 'letter_opener', '~> 1.4.1'
 end
 
 group :development, :test do
   gem 'byebug'
   gem 'spring'
-  gem 'rspec-rails', '~> 3.5.0'
+  gem 'rspec-rails', '~> 3.5.1'
   gem 'factory_girl_rails', '~> 4.7.0'
 end
 
