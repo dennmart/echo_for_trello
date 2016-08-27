@@ -19,7 +19,7 @@ gem 'high_voltage', '~> 3.0.0'
 gem 'hogan_assets', '~> 1.6'
 gem 'kaminari', '~> 0.16'
 gem 'sidekiq', '~> 4.1.2'
-gem 'sinatra', github: "sinatra/sinatra", require: nil
+gem 'sinatra', '2.0.0.beta2', require: nil
 gem 'airbrake', '~> 5.4.1'
 gem 'puma', '~> 3.4.0'
 gem 'analytics-ruby', '~> 2.1.0', require: 'segment'
