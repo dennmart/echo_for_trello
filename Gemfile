@@ -25,6 +25,7 @@ gem 'puma', '~> 3.6.0'
 gem 'analytics-ruby', '~> 2.2.2', require: 'segment'
 gem 'clockwork', '~> 2.0.0'
 gem 'snitcher', '~> 0.4.0'
+gem 'react-rails', '~> 1.8.2'
 
 group :production do
   gem 'rails_12factor'
