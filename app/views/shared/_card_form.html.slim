@@ -17,7 +17,7 @@
     .col-md-4
       = f.text_area :description, class: 'form-control', placeholder: 'Description (optional)'
 
-  = react_component "CardFrequency", { frequency: card.frequency, frequency_period: card.frequency_period }
+  = react_component "CardFrequency", { frequency: card.frequency, frequency_period: card.frequency_period, next_run: current_user.next_run_info }
 
   .form-group
     .col-md-2.col-md-offset-2.text-right

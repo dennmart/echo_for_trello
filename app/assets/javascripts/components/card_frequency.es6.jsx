@@ -42,7 +42,7 @@ class CardFrequency extends React.Component {
   renderDailyOptions() {
     return (
       <div className="col-md-6 col-md-offset-4">
-        <p>Your card will be created every day at midnight (Pacific Time).</p>
+        <p>Your card will be created every day at {this.props.next_run}.</p>
       </div>
     );
   }
@@ -61,6 +61,9 @@ class CardFrequency extends React.Component {
           <select className="form-control" id="card_frequency_period" value={this.state.frequencyPeriod} name="card[frequency_period]" onChange={this.updateFrequencyPeriod}>
             {options}
           </select>
+        </div>
+        <div className="col-md-6 col-md-offset-4">
+          <p>Your card will be created on your chosen day of the week at {this.props.next_run}.</p>
         </div>
       </div>
     );
@@ -81,6 +84,9 @@ class CardFrequency extends React.Component {
             {options}
           </select>
         </div>
+        <div className="col-md-6 col-md-offset-4">
+          <p>Your card will be created on your chosen day of the month at {this.props.next_run}.</p>
+        </div>
       </div>
     );
   }
@@ -88,7 +94,7 @@ class CardFrequency extends React.Component {
   renderWeekdayOptions() {
     return (
       <div className="col-md-6 col-md-offset-4">
-        <p>Your card will be created every weekday (Monday through Friday) at midnight (Pacific Time).</p>
+        <p>Your card will be created every weekday (Monday through Friday) at {this.props.next_run}.</p>
       </div>
     );
   }
@@ -96,7 +102,7 @@ class CardFrequency extends React.Component {
   renderWeekendOptions() {
     return (
       <div className="col-md-6 col-md-offset-4">
-        <p>Your card will be created every Saturday and Sunday at midnight (Pacific Time).</p>
+        <p>Your card will be created every Saturday and Sunday at {this.props.next_run}.</p>
       </div>
     );
   }

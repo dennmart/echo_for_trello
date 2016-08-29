@@ -42,4 +42,32 @@ RSpec.describe User, :type => :model do
       expect(user.oauth_token).to eq('new-token')
     end
   end
+
+  describe "#next_run_info" do
+    let(:user) { FactoryGirl.build(:user) }
+
+    before(:each) do
+      Timecop.freeze(Time.new(2016, 8, 29, 12, 0, 0)) # Wednesday
+    end 
+
+    after(:each) do
+      Timecop.return
+    end
+
+    it "returns a string with the time for midnight UTC in the user's time zone" do
+      user.time_zone = "Pacific Time (US & Canada)"
+      expect(user.next_run_info).to eq("5:00 PM (Pacific Time (US & Canada))")
+
+      user.time_zone = "Eastern Time (US & Canada)"
+      expect(user.next_run_info).to eq("8:00 PM (Eastern Time (US & Canada))")
+
+      user.time_zone = "Osaka"
+      expect(user.next_run_info).to eq("9:00 AM (Osaka)")
+    end
+
+    it "defaults to UTC if the user doesn't have a time zone set" do
+      user.time_zone = nil
+      expect(user.next_run_info).to eq("12:00 AM (UTC)")
+    end
+  end
 end

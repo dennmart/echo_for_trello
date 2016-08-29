@@ -17,4 +17,9 @@ class User < ActiveRecord::Base
       user.oauth_token = auth["credentials"]["token"]
     end
   end
+
+  def next_run_info
+    next_run = 1.day.from_now.utc.midnight.in_time_zone(time_zone)
+    next_run.strftime("%-l:%M %p (#{time_zone || "UTC"})")
+  end
 end
