@@ -54,29 +54,6 @@ $ ->
           $('#new_list_modal').modal('hide')
           $('#card_trello_list_id').val(data.list_id)
 
-  $('#card_frequency').on 'change', ->
-    if this.value == ''
-      $('#frequency_period_group').html('')
-    else
-      $('#frequency_period_group').removeClass('hidden')
-      if this.value == '1'
-        template = HoganTemplates['frequency_daily_options']
-        templateData = {}
-      else if this.value == '2'
-        template = HoganTemplates['frequency_weekly_options']
-        templateData = weeklyOptions
-      else if this.value == '3'
-        template = HoganTemplates['frequency_monthly_options']
-        templateData = monthlyOptions
-      else if this.value == '4'
-        template = HoganTemplates['frequency_weekday_options']
-        templateData = {}
-      else if this.value == '5'
-        template = HoganTemplates['frequency_weekend_options']
-        templateData = {}
-      $('#frequency_period_group').html(template.render(templateData))
-      $('#frequency_period_warning').html('')
-
   $('.card-form').validate
     rules:
       'card[trello_list_id]':
@@ -93,30 +70,3 @@ $ ->
       $(elem).parent('div').addClass('has-error')
     unhighlight: (elem) ->
       $(elem).parent('div').removeClass('has-error')
-
-  frequencyPeriodOptions = ->
-    frequencyPeriodValue = $('#frequency_period_value').val()
-    if $('#card_frequency').val() == '1'
-      $('#frequency_period_group').html(HoganTemplates['frequency_daily_options'].render())
-    else if $('#card_frequency').val() == '2'
-      $('#frequency_period_group').html(HoganTemplates['frequency_weekly_options'].render(weeklyOptions))
-      $('#card_frequency_period').val(frequencyPeriodValue)
-    else if $('#card_frequency').val() == '3'
-      $('#frequency_period_group').html(HoganTemplates['frequency_monthly_options'].render(monthlyOptions))
-      $('#card_frequency_period').val(frequencyPeriodValue)
-      if frequencyPeriodValue > 28
-        $('#frequency_period_warning').html(HoganTemplates['frequency_period_warning'].render({ 'card_day': frequencyPeriodValue }))
-    else if $('#card_frequency').val() == '4'
-      $('#frequency_period_group').html(HoganTemplates['frequency_weekday_options'].render())
-    else if $('#card_frequency').val() == '5'
-      $('#frequency_period_group').html(HoganTemplates['frequency_weekend_options'].render())
-
-  $(document).ready(frequencyPeriodOptions)
-
-  $(document).ready ->
-    $('#card_frequency_period').on 'change', ->
-      if this.value > 28
-        $('#frequency_period_warning').html(HoganTemplates['frequency_period_warning'].render({ 'card_day': this.value }))
-      else
-        $('#frequency_period_warning').html('')
-
