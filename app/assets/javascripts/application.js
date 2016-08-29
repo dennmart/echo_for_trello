@@ -13,10 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require hogan.js
 //= require react
 //= require react_ujs
 //= require components
-//= require_tree ./templates
 //= require_tree ./vendor
 //= require_tree .
