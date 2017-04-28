@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
-  let(:omniauth) { OmniAuth::AuthHash.new(provider: 'trello', uid: 'new-user-uid', info: { name: 'John Doe', nickname: 'johndoe' }, credentials: { token: 'new-token' }) }
+  let(:omniauth) { OmniAuth::AuthHash.new(provider: 'trello', uid: 'new-user-uid', info: { name: 'John Doe', nickname: 'johndoe', email: "johndoe@test.com" }, credentials: { token: 'new-token' }) }
 
   describe ".from_omniauth" do
     context "with existing user" do
       let!(:user) { FactoryGirl.create(:user) }
-      let(:user_omniauth) { OmniAuth::AuthHash.new(provider: user.provider, uid: user.uid, info: { name: user.full_name, nickname: user.nickname }, credentials: { token: user.oauth_token }) }
+      let(:user_omniauth) { OmniAuth::AuthHash.new(provider: user.provider, uid: user.uid, info: { name: user.full_name, nickname: user.nickname, email: "user@test.com" }, credentials: { token: user.oauth_token }) }
 
       it "returns the user object when matching the provider and UID" do
         expect(User.from_omniauth(user_omniauth)).to eq(user)
@@ -17,11 +17,28 @@ RSpec.describe User, :type => :model do
       end
 
       it "updates the oAuth token if it changed" do
-        user_omniauth = OmniAuth::AuthHash.new(provider: user.provider, uid: user.uid, info: { name: user.full_name, nickname: user.nickname }, credentials: { token: 'trello-new-token' })
+        user_omniauth = OmniAuth::AuthHash.new(provider: user.provider, uid: user.uid, info: { name: user.full_name, nickname: user.nickname, email: user.email }, credentials: { token: 'trello-new-token' })
         expect {
           User.from_omniauth(user_omniauth)
           user.reload
         }.to change(user, :oauth_token)
+      end
+
+      it "updates the email if it's not present" do
+        expect {
+          User.from_omniauth(user_omniauth)
+          user.reload
+        }.to change(user, :email).from(nil).to("user@test.com")
+      end
+
+      it "updates the email if it changed" do
+        user.update(email: "user@test.com")
+        user_omniauth = OmniAuth::AuthHash.new(provider: user.provider, uid: user.uid, info: { name: user.full_name, nickname: user.nickname, email: "newemail@test.com" }, credentials: { token: user.oauth_token })
+
+        expect {
+          User.from_omniauth(user_omniauth)
+          user.reload
+        }.to change(user, :email).from("user@test.com").to("newemail@test.com")
       end
     end
 
@@ -40,6 +57,7 @@ RSpec.describe User, :type => :model do
       expect(user.full_name).to eq('John Doe')
       expect(user.nickname).to eq('johndoe')
       expect(user.oauth_token).to eq('new-token')
+      expect(user.email).to eq('johndoe@test.com')
     end
   end
 

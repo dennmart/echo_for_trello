@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     user = where(provider: auth.provider, uid: auth.uid).first || create_from_omniauth(auth)
-    user.update_attributes(oauth_token: auth["credentials"]["token"]) unless user.oauth_token == auth["credentials"]["token"]
+    user.update(oauth_token: auth["credentials"]["token"]) if user.oauth_token != auth["credentials"]["token"]
+    user.update(email: auth["info"]["email"]) if user.email.blank? || user.email != auth["info"]["email"]
     user
   end
 
@@ -15,6 +16,7 @@ class User < ActiveRecord::Base
       user.full_name = auth["info"]["name"]
       user.nickname = auth["info"]["nickname"]
       user.oauth_token = auth["credentials"]["token"]
+      user.email = auth["info"]["email"]
     end
   end
 
