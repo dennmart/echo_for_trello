@@ -69,7 +69,7 @@ class Card < ActiveRecord::Base
 
   def track_card_creation_event
     event_data = { event: "Card created", user_id: user_id, properties: { frequency: FREQUENCY.invert[frequency] } }
-    event_data[:properties].merge!(frequency_period: frequency_period) if frequency_period
+    event_data[:properties][:frequency_period] = frequency_period if frequency_period
     SendAnalyticsEventWorker.perform_async(event_data)
   end
 end
