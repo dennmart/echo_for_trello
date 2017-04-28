@@ -7,5 +7,5 @@ module Clockwork
     puts "Running #{job}"
   end
 
-  every(1.day, 'card.create_pending_trello_cards', at: '00:01') { Card.create_pending_trello_cards }
+  every(1.hour, 'card.create_pending_trello_cards', at: '**:01') { Card.create_pending_trello_cards }
 end
