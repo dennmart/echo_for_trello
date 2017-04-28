@@ -63,14 +63,6 @@ RSpec.describe CreateTrelloCardWorker, :type => :worker do
         expect(card_log.successful).to eq(false)
         expect(card_log.message).to eq("401 Unauthorized - invalid token")
       end
-
-      it "disables the card if the API response is not successful" do
-        trello_api_response = double(success?: false, code: 401, message: "Unauthorized", body: "invalid token\n")
-        allow_any_instance_of(TrelloApi).to receive(:create_card).and_return(trello_api_response)
-        allow(Card).to receive(:find).and_return(card)
-        expect(card).to receive(:disable!)
-        CreateTrelloCardWorker.new.perform(user.id, card.id)
-      end
     end
   end
 end

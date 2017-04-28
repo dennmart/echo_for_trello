@@ -11,7 +11,6 @@ class CreateTrelloCardWorker
       CardLog.create(card: card, user: user, successful: true)
       UpdateCardPositionWorker.perform_async(user_id, card_id, trello_response["id"]) if card.position.present?
     else
-      card.disable!
       message = "#{trello_response.code} #{trello_response.message} - #{trello_response.body.strip}"
       CardLog.create(card: card, user: user, successful: false, message: message)
     end
