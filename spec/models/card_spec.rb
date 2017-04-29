@@ -232,6 +232,26 @@ RSpec.describe Card, :type => :model do
     end
   end
 
+  describe "#clear_failed_attempts!" do
+    it "resets the failed_attempts counter to zero" do
+      card = FactoryGirl.create(:card, failed_attempts: 2)
+
+      expect {
+        card.clear_failed_attempts!
+      }.to change(card, :failed_attempts).from(2).to(0)
+    end
+  end
+
+  describe "#increment_failed_attempts!" do
+    it "increments the failed_attempts counter" do
+      card = FactoryGirl.create(:card, failed_attempts: 1)
+
+      expect {
+        card.increment_failed_attempts!
+      }.to change(card, :failed_attempts).from(1).to(2)
+    end
+  end
+
   describe ".create_pending_trello_cards" do
     before(:all) do
       Timecop.freeze

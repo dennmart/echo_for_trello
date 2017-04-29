@@ -53,6 +53,14 @@ class Card < ActiveRecord::Base
     update_attributes(disabled: true, next_run: nil)
   end
 
+  def clear_failed_attempts!
+    update_attributes(failed_attempts: 0)
+  end
+
+  def increment_failed_attempts!
+    increment!(:failed_attempts)
+  end
+
   def self.create_pending_trello_cards
     Card.where(disabled: false).where("next_run <= ?", Time.now).each do |card|
       CreateTrelloCardWorker.perform_async(card.user_id, card.id)
