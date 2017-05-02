@@ -48,7 +48,7 @@ module CardNextRun
   private
 
   def time
-    Time.now.utc.beginning_of_day
+    Time.current.beginning_of_day
   end
 
   def tomorrow
