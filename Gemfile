@@ -17,7 +17,7 @@ gem 'httparty', '~> 0.14.0'
 gem 'high_voltage', '~> 3.0.0'
 gem 'kaminari', '~> 1.0.1'
 gem 'sidekiq', '~> 5.0.0'
-gem 'sinatra', '2.0.0.rc2', require: nil
+gem 'sinatra', '~> 2.0.0', require: nil
 gem 'airbrake', '~> 6.0.0'
 gem 'puma', '~> 3.8.2'
 gem 'analytics-ruby', '~> 2.2.2', require: 'segment'
