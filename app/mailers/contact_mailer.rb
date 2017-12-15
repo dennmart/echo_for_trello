@@ -4,6 +4,6 @@ class ContactMailer < ApplicationMailer
     @email = email
     @message = message
 
-    mail(to: ENV["DEFAULT_EMAIL_SENDER"], from: "#{@name} <#{@email}>", subject: "[Echo for Trello] Message from #{@name} (#{@email})")
+    mail(to: Rails.application.secrets.default_email_sender, from: "#{@name} <#{@email}>", subject: "[Echo for Trello] Message from #{@name} (#{@email})")
   end
 end

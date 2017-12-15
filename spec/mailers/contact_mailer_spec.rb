@@ -9,7 +9,7 @@ RSpec.describe ContactMailer, type: :mailer do
     end
 
     it "sets the :to header with the default email sender" do
-      expect(email.to).to include(ENV["DEFAULT_EMAIL_SENDER"])
+      expect(email.to).to include(Rails.application.secrets.default_email_sender)
     end
 
     it "includes the name and email of the sender in the subject" do
