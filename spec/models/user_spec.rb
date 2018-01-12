@@ -43,21 +43,9 @@ RSpec.describe User, :type => :model do
     end
 
     context "new user" do
-      it "creates a new user if there's not one that matches the provider and UID" do
-        expect { User.from_omniauth(omniauth) }.to change(User, :count).by(1)
+      it "returns nil" do
+        expect(User.from_omniauth(omniauth)).to be_nil
       end
-    end
-  end
-
-  describe ".create_from_omniauth" do
-    it "creates a new user using the OmniAuth auth hash information" do
-      user = User.create_from_omniauth(omniauth)
-      expect(user.provider).to eq('trello')
-      expect(user.uid).to eq('new-user-uid')
-      expect(user.full_name).to eq('John Doe')
-      expect(user.nickname).to eq('johndoe')
-      expect(user.oauth_token).to eq('new-token')
-      expect(user.email).to eq('johndoe@test.com')
     end
   end
 
@@ -66,7 +54,7 @@ RSpec.describe User, :type => :model do
 
     before(:each) do
       Timecop.freeze(Time.new(2016, 8, 29, 12, 0, 0)) # Wednesday
-    end 
+    end
 
     after(:each) do
       Timecop.return

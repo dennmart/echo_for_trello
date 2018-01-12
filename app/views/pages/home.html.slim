@@ -8,6 +8,10 @@
       strong If you have previously logged in to Echo For Trello, log in to see which cards were being generated for your account.
 
     = link_to "#{image_tag 'trello-icon-login.png'}  Log in with Trello".html_safe, '/auth/trello', class: 'btn btn-default trello-login-btn'
+
+    - if flash[:alert]
+      p
+        .alert.alert-warning= flash[:alert]
   hr
   .row.buffer-bottom
     .col-md-8.col-md-offset-2

@@ -4,16 +4,32 @@ RSpec.describe SessionsController, :type => :controller do
   let(:user) { FactoryGirl.create(:user) }
 
   describe "#create" do
-    it "sets the user ID in the session" do
-      expect(User).to receive(:from_omniauth).and_return(user)
-      get :create, params: { provider: "trello", oauth_token: "token", oauth_verifier: "verifier" }
-      expect(session[:user_id]).to eq(user.id)
+    context "existing user" do
+      before(:each) do
+        expect(User).to receive(:from_omniauth).and_return(user)
+      end
+
+      it "sets the user ID in the session" do
+        get :create, params: { provider: "trello", oauth_token: "token", oauth_verifier: "verifier" }
+        expect(session[:user_id]).to eq(user.id)
+      end
+
+      it "redirects to the boards page" do
+        get :create, params: { provider: "trello", oauth_token: "token", oauth_verifier: "verifier" }
+        expect(response).to redirect_to(boards_url)
+      end
     end
 
-    it "redirects to root" do
-      expect(User).to receive(:from_omniauth).and_return(user)
-      get :create, params: { provider: "trello", oauth_token: "token", oauth_verifier: "verifier" }
-      expect(response).to redirect_to(boards_url)
+    context "new user" do
+      before(:each) do
+        expect(User).to receive(:from_omniauth).and_return(nil)
+      end
+
+      it "redirects to the home page with an alert" do
+        get :create, params: { provider: "trello", oauth_token: "token", oauth_verifier: "verifier" }
+        expect(flash[:alert]).to_not be_empty
+        expect(response).to redirect_to(root_url)
+      end
     end
   end
 

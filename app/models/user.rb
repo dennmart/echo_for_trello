@@ -3,21 +3,14 @@ class User < ActiveRecord::Base
   has_many :card_logs
 
   def self.from_omniauth(auth)
-    user = where(provider: auth.provider, uid: auth.uid).first || create_from_omniauth(auth)
-    user.update(oauth_token: auth["credentials"]["token"]) if user.oauth_token != auth["credentials"]["token"]
-    user.update(email: auth["info"]["email"]) if user.email.blank? || user.email != auth["info"]["email"]
-    user
-  end
+    user = find_by(provider: auth.provider, uid: auth.uid)
 
-  def self.create_from_omniauth(auth)
-    create! do |user|
-      user.provider = auth["provider"]
-      user.uid = auth["uid"]
-      user.full_name = auth["info"]["name"]
-      user.nickname = auth["info"]["nickname"]
-      user.oauth_token = auth["credentials"]["token"]
-      user.email = auth["info"]["email"]
+    if user
+      user.update(oauth_token: auth["credentials"]["token"]) if user.oauth_token != auth["credentials"]["token"]
+      user.update(email: auth["info"]["email"]) if user.email.blank? || user.email != auth["info"]["email"]
     end
+
+    user
   end
 
   def next_run_info
