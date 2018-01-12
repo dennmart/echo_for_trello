@@ -18,9 +18,6 @@ html
         ul.nav.navbar-nav.navbar-right
           - if current_user.admin?
             li= link_to 'Admin', admin_path
-          li= link_to 'Your Trello Boards', boards_path
-          li= link_to 'Your Cards', cards_path
-          li= link_to 'Settings', settings_path
           li= link_to 'Logout', logout_path
 
     .container
@@ -30,7 +27,5 @@ html
         - elsif flash[:error]
           p.bg-danger= flash[:error]
       = yield
-
-      = render 'shared/footer'
 
   = render 'shared/analytics'

@@ -1,31 +1,26 @@
 - if @cards.empty?
   h3.text-center
-    | You currently have no cards in Echo for Trello! You should #{link_to "go create some", boards_path}.
+    | You never created any cards in Echo For Trello.
 - else
   table.table.table-hover
     thead
       tr
         th Board
         th List
-        th Card Name
+        th Card Title
+        th Description
         th Frequency
-        th Action
+        th Position In List
     tbody
       - @cards.each do |card|
         tr
           td= board_name(@boards, card.trello_board_id)
           td= list_name(@boards, card.trello_board_id, card.trello_list_id)
           td= card.title
+          td= card.description
           td= card_frequency_text(card)
-          td
-            = edit_card_link(card)
-            = update_card_status_link(card)
-            = delete_card_link(card)
+          td= card.position.present? ? card.position.try(:capitalize) : "Bottom"
 
-  .row
+  .row.buffer-bottom
     .col-md-12.text-center
       = paginate @cards
-
-  .row
-    .col-md-12.text-center
-      = link_to "Log of created cards", logs_cards_path

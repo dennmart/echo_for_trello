@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
     if user
       session[:user_id] = user.id
-      redirect_to boards_path, :notice => "Signed in!"
+      redirect_to cards_path
     else
       redirect_to root_path, :alert => "Echo For Trello will only allow access to previously logged-in accounts."
     end

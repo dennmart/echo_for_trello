@@ -14,9 +14,9 @@ RSpec.describe SessionsController, :type => :controller do
         expect(session[:user_id]).to eq(user.id)
       end
 
-      it "redirects to the boards page" do
+      it "redirects to the cards page" do
         get :create, params: { provider: "trello", oauth_token: "token", oauth_verifier: "verifier" }
-        expect(response).to redirect_to(boards_url)
+        expect(response).to redirect_to(cards_url)
       end
     end
 
