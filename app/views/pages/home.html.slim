@@ -1,30 +1,28 @@
 .container
   .page-header.text-center
     = image_tag 'echo-for-trello-logo.png', width: '200px'
-    h1 Echo for Trello
-    h2 Create recurring cards in Trello
-
-  .row.text-center
-    = link_to "#{image_tag 'trello-icon-login.png'}  Log in with Trello".html_safe, '/auth/trello', class: 'btn btn-default trello-login-btn'
-
+    h2 Echo For Trello shutdown announcement
   hr
+  .row.text-center
+    p
+      strong If you have previously logged in to Echo For Trello, log in to see which cards were being generated for your account.
 
-  .row
-    .col-md-12.text-center
-      h3 Echo for Trello makes it easy to automatically create cards daily, weekly or monthly.
+    = link_to "#{image_tag 'trello-icon-login.png'}  Log in with Trello".html_safe, '/auth/trello', class: 'btn btn-default trello-login-btn'
+  hr
+  .row.buffer-bottom
+    .col-md-8.col-md-offset-2
+      p Three years ago, I created Echo For Trello to scratch an itch. I love using Trello, and I wanted to have a way to have repeatable cards created on my account. Since it was useful for me, I released it for others to use as well in hopes that it was also helpful for someone else. In those three years, over 4,400 Trello accounts connected to Echo For Trello, creating almost half a million Trello cards. Considering that I did not promote this tool, that's an incredible amount.
 
-  .row.buffer-top
-    .col-md-4.text-center
-       = image_tag "echo-for-trello-step1.png", style: "height: 150px"
-       h4 Select a board to start creating a card
-       p Once you log in to Echo for Trello using your Trello account, you will see a list of your boards.
-    .col-md-4.text-center
-       = image_tag "echo-for-trello-step2.png", style: "height: 150px"
-       h4 Create a recurring card
-       p After you select a board, select one of the board's lists or create a new one, enter the card name and optional description and the frequency you wish the card to be created on Trello (currently only daily, weekly or monthly).
-    .col-md-4.text-center
-       = image_tag "echo-for-trello-step3.png", style: "height: 150px"
-       h4 Get your card on Trello!
-       p Your card will be automatically created on Trello at the time you specified.
+      p A few months after launching, <a href="https://blog.trello.com/if-this-then-trello">Trello created a channel</a> on the online service IFTTT, which includes functionality to generate recurring cards that mirrors Echo For Trello. I kept Echo For Trello running because I had plans to continue to expand the service to make it much more useful for Trello fans like myself.
 
-  = render 'shared/footer'
+      p Unfortunately, that never came to be. Time constraints were a big reason for that, as I have a full-time job and want to spend as much time as possible with my wife. But if I can be honest, I was also a bit unmotivated to continue development because there didn't seem to be a lot of demand to use or expand a service like this.
+
+      p Since there are tools that do the same as this site, I decided to shut down Echo For Trello. As of <strong>January 12, 2018</strong>, Echo For Trello will discontinue all automatic card generation. Users who previously logged in to Echo For Trello before this date will be able to log in to view the cards that they set up using the service until <strong>January 31, 2018</strong>.
+
+      p The source code for Echo For Trello has always been available on <a href="https://github.com/dennmart/echo_for_trello">GitHub</a> and will remain there in case anyone wishes to continue running the service on their own.
+
+      p If there are any questions, concerns or comments regarding Echo For Trello's shutdown, please reach out to me on <a href="https://twitter.com/dennmart">Twitter</a>.
+
+      p I sincerely hope that Echo For Trello was useful for others as it was to me.
+
+      p - Dennis Martinez
