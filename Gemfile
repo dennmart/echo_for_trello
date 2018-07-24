@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 ruby '2.4.3'
 
 gem 'rails', '5.1.4'
+gem 'sprockets', '~> 3.7.2'
 gem 'pg', '~> 0.21.0'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'sass-rails', '~> 5.0.6'
@@ -17,7 +18,7 @@ gem 'httparty', '~> 0.15.6'
 gem 'high_voltage', '~> 3.0.0'
 gem 'kaminari', '~> 1.0.1'
 gem 'sidekiq', '~> 5.0.4'
-gem 'sinatra', '~> 2.0.0', require: nil
+gem 'sinatra', '~> 2.0.3', require: nil
 gem 'airbrake', '~> 6.2.1'
 gem 'puma', '~> 3.10.0'
 gem 'analytics-ruby', '~> 2.2.2', require: 'segment'
