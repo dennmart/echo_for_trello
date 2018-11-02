@@ -2,13 +2,13 @@
 
 Echo for Trello is a web application to allow [Trello](https://trello.com/) users to set recurring cards at a specific interval via the Trello API. Cards will be repeated daily, weekly or monthly.
 
-To see Echo for Trello in action, go to https://echofortrello.com/.
+**This repo is no longer actively maintained. Only occasional security updates are pushed to the repo. Pull requests for new features and/or bug fixes are still welcome.**
 
 [![Build Status](https://travis-ci.org/dennmart/echo_for_trello.svg?branch=master)](https://travis-ci.org/dennmart/echo_for_trello)
 
 ## Requirements
 
-Echo for Trello is a Ruby on Rails application, so Ruby is required. I prefer [rbenv](https://github.com/sstephenson/rbenv) for setting up Ruby. The app has been developed and running in production using Ruby 2.3.0.
+Echo for Trello is a Ruby on Rails application, so Ruby is required. I prefer [rbenv](https://github.com/sstephenson/rbenv) for setting up Ruby. The app was last running in production using Ruby 2.4.3.
 
 ## Development Setup
 
