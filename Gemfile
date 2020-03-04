@@ -20,7 +20,7 @@ gem 'kaminari', '~> 1.0.1'
 gem 'sidekiq', '~> 5.0.4'
 gem 'sinatra', '~> 2.0.3', require: nil
 gem 'airbrake', '~> 6.2.1'
-gem 'puma', '~> 3.10.0'
+gem 'puma', '~> 3.12.4'
 gem 'analytics-ruby', '~> 2.2.2', require: 'segment'
 gem 'clockwork', '~> 2.0.2'
 gem 'snitcher', '~> 0.4.0'
