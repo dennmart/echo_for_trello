@@ -16,7 +16,7 @@ gem 'omniauth', '~> 1.6'
 gem 'omniauth-trello', '0.0.4'
 gem 'httparty', '~> 0.15.6'
 gem 'high_voltage', '~> 3.0.0'
-gem 'kaminari', '~> 1.0.1'
+gem 'kaminari', '~> 1.2.1'
 gem 'sidekiq', '~> 5.0.4'
 gem 'sinatra', '~> 2.0.3', require: nil
 gem 'airbrake', '~> 6.2.1'
